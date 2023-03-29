@@ -7,9 +7,10 @@
 struct MainDatabase {
     
     var productDb: [String: Product] = [:]
+    var discountDb: [String: Discount] = [:]
     var orderDb: [String: Order] = [:]
     var userDb: [Int: User] = [:]
-    var cartDb: [Int: Cart] = [:]
+    var cartDb: [Int: [Cart]] = [:]
     var accountDb: [String: String] = [:]
     
 }
