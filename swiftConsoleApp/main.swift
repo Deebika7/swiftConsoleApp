@@ -26,9 +26,9 @@ MainLoop: while(true){
     
     switch preference {
     case 1:
-        
+        print("test")
     case 2:
-        
+        print("test")
     case 3:
         break MainLoop
     default:
