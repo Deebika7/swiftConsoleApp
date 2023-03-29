@@ -29,6 +29,7 @@
 		163C54F229D42CE40083DEE5 /* AdminOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54F129D42CE40083DEE5 /* AdminOptions.swift */; };
 		163C54F429D42D0F0083DEE5 /* CustomerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54F329D42D0F0083DEE5 /* CustomerOptions.swift */; };
 		163C54F629D42D4B0083DEE5 /* LoginOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54F529D42D4B0083DEE5 /* LoginOptions.swift */; };
+		163C54FA29D468D70083DEE5 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54F929D468D70083DEE5 /* Validator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,6 +68,7 @@
 		163C54F129D42CE40083DEE5 /* AdminOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOptions.swift; sourceTree = "<group>"; };
 		163C54F329D42D0F0083DEE5 /* CustomerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerOptions.swift; sourceTree = "<group>"; };
 		163C54F529D42D4B0083DEE5 /* LoginOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOptions.swift; sourceTree = "<group>"; };
+		163C54F929D468D70083DEE5 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 		163C54E829D41C950083DEE5 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				163C54F829D468C00083DEE5 /* Utils */,
 				163C54E929D41CA00083DEE5 /* Menu */,
 			);
 			path = UserInterface;
@@ -219,6 +222,14 @@
 				163C54F529D42D4B0083DEE5 /* LoginOptions.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		163C54F829D468C00083DEE5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				163C54F929D468D70083DEE5 /* Validator.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +295,7 @@
 				163C54ED29D41CC40083DEE5 /* CustomerMenu.swift in Sources */,
 				163C54E529D30CCA0083DEE5 /* AdminProductDataManager.swift in Sources */,
 				163C54CC29D2FA5A0083DEE5 /* Cart.swift in Sources */,
+				163C54FA29D468D70083DEE5 /* Validator.swift in Sources */,
 				163C54F429D42D0F0083DEE5 /* CustomerOptions.swift in Sources */,
 				163C54D729D2FBC60083DEE5 /* MainDatabase.swift in Sources */,
 				163C54E329D30C850083DEE5 /* CustomerProductDataManager.swift in Sources */,
