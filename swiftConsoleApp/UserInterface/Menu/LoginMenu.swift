@@ -6,9 +6,20 @@
 //
 struct LoginMenu {
     func signIn(){
+        print("Enter Phone Number:")
+        let phoneNumber: Int
+        print("Enter Password")
+        let password: String
+        
         
     }
     func signUp(){
+        print("Enter Name:")
+        let name: String
+        print("Enter Phone Number:")
+        let phoneNumber: Int
+        print("Enter Password")
+        let password: String
         
     }
 }
