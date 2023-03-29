@@ -16,12 +16,13 @@
 		163C54C829D2FA4C0083DEE5 /* Discount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54C729D2FA4C0083DEE5 /* Discount.swift */; };
 		163C54CA29D2FA530083DEE5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54C929D2FA530083DEE5 /* Order.swift */; };
 		163C54CC29D2FA5A0083DEE5 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54CB29D2FA5A0083DEE5 /* Cart.swift */; };
-		163C54D729D2FBC60083DEE5 /* ProductDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54D629D2FBC60083DEE5 /* ProductDB.swift */; };
+		163C54D729D2FBC60083DEE5 /* MainDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54D629D2FBC60083DEE5 /* MainDatabase.swift */; };
 		163C54DD29D30C550083DEE5 /* UserDetailsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54DC29D30C550083DEE5 /* UserDetailsManager.swift */; };
 		163C54DF29D30C680083DEE5 /* AdminOrderDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54DE29D30C680083DEE5 /* AdminOrderDataManager.swift */; };
 		163C54E129D30C740083DEE5 /* CustomerOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54E029D30C740083DEE5 /* CustomerOrderManager.swift */; };
 		163C54E329D30C850083DEE5 /* CustomerProductDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54E229D30C850083DEE5 /* CustomerProductDataManager.swift */; };
 		163C54E529D30CCA0083DEE5 /* AdminProductDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54E429D30CCA0083DEE5 /* AdminProductDataManager.swift */; };
+		163C54E729D4118D0083DEE5 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54E629D4118D0083DEE5 /* DatabaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,12 +48,13 @@
 		163C54C729D2FA4C0083DEE5 /* Discount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discount.swift; sourceTree = "<group>"; };
 		163C54C929D2FA530083DEE5 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		163C54CB29D2FA5A0083DEE5 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
-		163C54D629D2FBC60083DEE5 /* ProductDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDB.swift; sourceTree = "<group>"; };
+		163C54D629D2FBC60083DEE5 /* MainDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDatabase.swift; sourceTree = "<group>"; };
 		163C54DC29D30C550083DEE5 /* UserDetailsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsManager.swift; sourceTree = "<group>"; };
 		163C54DE29D30C680083DEE5 /* AdminOrderDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrderDataManager.swift; sourceTree = "<group>"; };
 		163C54E029D30C740083DEE5 /* CustomerOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerOrderManager.swift; sourceTree = "<group>"; };
 		163C54E229D30C850083DEE5 /* CustomerProductDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerProductDataManager.swift; sourceTree = "<group>"; };
 		163C54E429D30CCA0083DEE5 /* AdminProductDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProductDataManager.swift; sourceTree = "<group>"; };
+		163C54E629D4118D0083DEE5 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,8 +115,8 @@
 		163C54B529D2F82C0083DEE5 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				163C54B929D2F8C90083DEE5 /* repository */,
-				163C54B829D2F8B40083DEE5 /* model */,
+				163C54D629D2FBC60083DEE5 /* MainDatabase.swift */,
+				163C54E629D4118D0083DEE5 /* DatabaseManager.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -125,21 +127,6 @@
 				163C54DB29D30C3F0083DEE5 /* User */,
 				163C54DA29D30C160083DEE5 /* Order */,
 				163C54D929D30C020083DEE5 /* Product */,
-			);
-			path = repository;
-			sourceTree = "<group>";
-		};
-		163C54B829D2F8B40083DEE5 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				163C54D629D2FBC60083DEE5 /* ProductDB.swift */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		163C54B929D2F8C90083DEE5 /* repository */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -250,10 +237,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				163C54E729D4118D0083DEE5 /* DatabaseManager.swift in Sources */,
 				163C54BE29D2F9B20083DEE5 /* User.swift in Sources */,
 				163C54E529D30CCA0083DEE5 /* AdminProductDataManager.swift in Sources */,
 				163C54CC29D2FA5A0083DEE5 /* Cart.swift in Sources */,
-				163C54D729D2FBC60083DEE5 /* ProductDB.swift in Sources */,
+				163C54D729D2FBC60083DEE5 /* MainDatabase.swift in Sources */,
 				163C54E329D30C850083DEE5 /* CustomerProductDataManager.swift in Sources */,
 				163C54C829D2FA4C0083DEE5 /* Discount.swift in Sources */,
 				163C54DF29D30C680083DEE5 /* AdminOrderDataManager.swift in Sources */,
