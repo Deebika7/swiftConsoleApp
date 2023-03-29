@@ -85,20 +85,11 @@
 		163C54A729D2F44C0083DEE5 /* swiftConsoleApp */ = {
 			isa = PBXGroup;
 			children = (
-				163C54B729D2F8680083DEE5 /* Constants */,
 				163C54B529D2F82C0083DEE5 /* Database */,
-				163C54AF29D2F46D0083DEE5 /* UserInterface */,
 				163C54B029D2F4870083DEE5 /* Core */,
 				163C54A829D2F44C0083DEE5 /* main.swift */,
 			);
 			path = swiftConsoleApp;
-			sourceTree = "<group>";
-		};
-		163C54AF29D2F46D0083DEE5 /* UserInterface */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UserInterface;
 			sourceTree = "<group>";
 		};
 		163C54B029D2F4870083DEE5 /* Core */ = {
@@ -136,13 +127,6 @@
 				163C54D929D30C020083DEE5 /* Product */,
 			);
 			path = repository;
-			sourceTree = "<group>";
-		};
-		163C54B729D2F8680083DEE5 /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Constants;
 			sourceTree = "<group>";
 		};
 		163C54B829D2F8B40083DEE5 /* model */ = {
