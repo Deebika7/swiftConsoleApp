@@ -6,7 +6,7 @@
 //
 
 
-
+private let menu = LoginMenu()
 MainLoop: while(true){
     
     print("------------------------------------------------------------------------------------------")
@@ -26,9 +26,9 @@ MainLoop: while(true){
     
     switch preference {
     case 1:
-        print("test")
+        menu.signIn()
     case 2:
-        print("test")
+        menu.signUp()
     case 3:
         break MainLoop
     default:

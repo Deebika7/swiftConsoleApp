@@ -90,15 +90,15 @@ class DatabaseManager {
     }
     
     //cart functions
-    func addProductToCartDB(Products) -> [Product] {
+    func addProductToCartDB<T: CustomStringConvertible>(product: Product) -> [T] {
         return
     }
     
-    func removeProductFromCartDB(parameters) -> return type {
+    func removeProductFromCartDB() {
         
     }
     
-    func getCartFromDB(parameters) -> return type {
+    func getCartFromDB()  {
         
     }
     
