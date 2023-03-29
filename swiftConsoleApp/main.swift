@@ -11,11 +11,11 @@ MainLoop: while(true){
     
     print("------------------------------------------------------------------------------------------")
     
-    print("welcome to Super Market")
+    print("welcome!")
     
     print("------------------------------------------------------------------------------------------")
 
-    for options in LoginOptions.allCases.enumerated(){
+    for options in LoginOptions.allCases.enumerated() {
         print("\(options.element.rawValue). \(options.element)")
     }
     
