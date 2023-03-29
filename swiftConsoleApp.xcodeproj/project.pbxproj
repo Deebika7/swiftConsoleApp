@@ -23,6 +23,9 @@
 		163C54E329D30C850083DEE5 /* CustomerProductDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54E229D30C850083DEE5 /* CustomerProductDataManager.swift */; };
 		163C54E529D30CCA0083DEE5 /* AdminProductDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54E429D30CCA0083DEE5 /* AdminProductDataManager.swift */; };
 		163C54E729D4118D0083DEE5 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54E629D4118D0083DEE5 /* DatabaseManager.swift */; };
+		163C54EB29D41CB40083DEE5 /* AdminMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54EA29D41CB40083DEE5 /* AdminMenu.swift */; };
+		163C54ED29D41CC40083DEE5 /* CustomerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54EC29D41CC40083DEE5 /* CustomerMenu.swift */; };
+		163C54EF29D41D2A0083DEE5 /* LoginMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54EE29D41D2A0083DEE5 /* LoginMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +58,9 @@
 		163C54E229D30C850083DEE5 /* CustomerProductDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerProductDataManager.swift; sourceTree = "<group>"; };
 		163C54E429D30CCA0083DEE5 /* AdminProductDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProductDataManager.swift; sourceTree = "<group>"; };
 		163C54E629D4118D0083DEE5 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		163C54EA29D41CB40083DEE5 /* AdminMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenu.swift; sourceTree = "<group>"; };
+		163C54EC29D41CC40083DEE5 /* CustomerMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerMenu.swift; sourceTree = "<group>"; };
+		163C54EE29D41D2A0083DEE5 /* LoginMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 		163C54A729D2F44C0083DEE5 /* swiftConsoleApp */ = {
 			isa = PBXGroup;
 			children = (
+				163C54E829D41C950083DEE5 /* UserInterface */,
 				163C54B529D2F82C0083DEE5 /* Database */,
 				163C54B029D2F4870083DEE5 /* Core */,
 				163C54A829D2F44C0083DEE5 /* main.swift */,
@@ -179,6 +186,24 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		163C54E829D41C950083DEE5 /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				163C54E929D41CA00083DEE5 /* Menu */,
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
+		163C54E929D41CA00083DEE5 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				163C54EA29D41CB40083DEE5 /* AdminMenu.swift */,
+				163C54EC29D41CC40083DEE5 /* CustomerMenu.swift */,
+				163C54EE29D41D2A0083DEE5 /* LoginMenu.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -239,6 +264,7 @@
 			files = (
 				163C54E729D4118D0083DEE5 /* DatabaseManager.swift in Sources */,
 				163C54BE29D2F9B20083DEE5 /* User.swift in Sources */,
+				163C54ED29D41CC40083DEE5 /* CustomerMenu.swift in Sources */,
 				163C54E529D30CCA0083DEE5 /* AdminProductDataManager.swift in Sources */,
 				163C54CC29D2FA5A0083DEE5 /* Cart.swift in Sources */,
 				163C54D729D2FBC60083DEE5 /* MainDatabase.swift in Sources */,
@@ -253,6 +279,8 @@
 				163C54C429D2FA310083DEE5 /* Product.swift in Sources */,
 				163C54A929D2F44C0083DEE5 /* main.swift in Sources */,
 				163C54C229D2F9CF0083DEE5 /* Customer.swift in Sources */,
+				163C54EF29D41D2A0083DEE5 /* LoginMenu.swift in Sources */,
+				163C54EB29D41CB40083DEE5 /* AdminMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
