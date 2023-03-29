@@ -6,8 +6,10 @@
 //
 
 class User {
+    
     private let phoneNumber: Int
     private let name: String
+    
     init(name: String, phoneNumber: Int) {
         self.name = name
         self.phoneNumber = phoneNumber
