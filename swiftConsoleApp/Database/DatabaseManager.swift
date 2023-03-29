@@ -13,12 +13,12 @@ class DatabaseManager {
     
     private let DBManagerInstance = DatabaseManager()
     
-    static func getDBManagerInstance<T:DatabaseManager>() -> T {
+    static func getDBManagerInstance<T: DatabaseManager>() -> T {
         return DBManagerInstance
     }
     
     //user functions
-    func addPhoneNumberAndPasswordToDB(phoneNumber: Int, password: String){
+    func addPhoneNumberAndPasswordToDB(phoneNumber: Int, password: String) {
         DBInstance.accountDb[phoneNumber] = password
     }
     
@@ -49,15 +49,15 @@ class DatabaseManager {
     func isProductExistInDB(productName: String) -> Bool {
         return DBInstance.productDb.keys.contains(productName)
     }
-    
-    func getProductFromDB<Product>(productName: String) -> Product? {
+
+    func getProductFromDB<T: CustomStringConvertible>(productName: String) -> T? {
         guard isProductExist(productName) else {
             return nil
         }
         return DBInstance.productDb[productName]
     }
     
-    func getAllProductsFromDB() -> [Product] {
+    func getAllProductsFromDB<T: CustomStringConvertible>() -> [T] {
         return DBInstance.productDb.values
     }
     
@@ -73,22 +73,25 @@ class DatabaseManager {
     func isDiscountExistInDB(productName: String) -> Bool {
         return DBInstance.productDb.keys.contains(productName)
     }
-    func getDiscountsFromDB() -> [Discount] {
+    
+    func getDiscountsFromDB<T: CustomStringConvertible>() -> [T] {
         return DBInstance.discountDb.values
     }
-    func getDiscountFromDB(productName: String) -> Discount {
+    
+    func getDiscountFromDB<T: CustomStringConvertible>(productName: String) -> T {
         guard isDiscountExist(productName) else {
             return nil
         }
         return DBInstance.discountDb[productName]
     }
     //order functions
-    func getAllOrdersFromDB() -> [Order] {
+    func getAllOrdersFromDB<T: CustomStringConvertible>() -> [T] {
         return DBInstance.orderDb.values
     }
+    
     //cart functions
-    func addProductToCartDB(cart Cart) -> [Cart] {
-        
+    func addProductToCartDB(Products) -> [Product] {
+        return
     }
     
     func removeProductFromCartDB(parameters) -> return type {

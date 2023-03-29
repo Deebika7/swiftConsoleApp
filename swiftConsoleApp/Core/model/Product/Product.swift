@@ -6,6 +6,8 @@
 //
 
 struct Product {
+    var description: String
+    
     
     private let ID: Int
     private let name: String

@@ -5,6 +5,8 @@
 //  Created by deebika-pt6680 on 28/03/23.
 //
 struct Discount {
+    var description: String
+    
     
     private let ID: Int
     private var percentage: Double
