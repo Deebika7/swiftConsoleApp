@@ -9,8 +9,10 @@ class DatabaseManager {
     private let DBInstance = MainDatabase()
     private init() {}
     private let DBManagerInstance = DatabaseManager()
-    func getDBManagerInstance<T:DatabaseManager>() -> T {
+    static func getDBManagerInstance<T:DatabaseManager>() -> T {
         return DBManagerInstance
     }
     
+    
 }
+
