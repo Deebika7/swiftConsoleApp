@@ -6,9 +6,13 @@
 //
 
 class DatabaseManager {
+    
     private let DBInstance = MainDatabase()
+    
     private init() {}
+    
     private let DBManagerInstance = DatabaseManager()
+    
     static func getDBManagerInstance<T:DatabaseManager>() -> T {
         return DBManagerInstance
     }

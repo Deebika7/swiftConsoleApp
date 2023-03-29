@@ -10,6 +10,7 @@ struct MainDatabase {
     var orderDb: [String:Order] = [:]
     var userDb: [Int:User] = [:]
     var cartDb: [Int:Cart] = [:]
+    var accountDb: [String:String] = [:]
     
 }
 
