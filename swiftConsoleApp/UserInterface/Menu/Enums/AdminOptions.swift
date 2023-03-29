@@ -5,7 +5,7 @@
 //  Created by deebika-pt6680 on 29/03/23.
 //
 
-enum AdminOptions {
+enum AdminOptions: : String, CaseIterable{
     case add_product,
          remove_product,
          view_product,

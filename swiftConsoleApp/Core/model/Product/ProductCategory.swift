@@ -5,7 +5,7 @@
 //  Created by deebika-pt6680 on 28/03/23.
 //
 enum ProductCategory {
-    case dairy,
+   case dairy,
         sause,
         cleaning,
         vegetables,

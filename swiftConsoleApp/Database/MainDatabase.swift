@@ -6,11 +6,11 @@
 //
 struct MainDatabase {
     
-    var productDb: [String:Product] = [:]
-    var orderDb: [String:Order] = [:]
-    var userDb: [Int:User] = [:]
-    var cartDb: [Int:Cart] = [:]
-    var accountDb: [String:String] = [:]
+    var productDb: [String: Product] = [:]
+    var orderDb: [String: Order] = [:]
+    var userDb: [Int: User] = [:]
+    var cartDb: [Int: Cart] = [:]
+    var accountDb: [String: String] = [:]
     
 }
 
