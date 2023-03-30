@@ -7,6 +7,7 @@
 
 struct Util {
     static func getValidIntegerInput() -> Int {
+        print(">> " , terminator: "")
         if let integer = Int ( readLine()!) {
             return integer
         }

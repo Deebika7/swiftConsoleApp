@@ -21,7 +21,7 @@ MainLoop: while(true){
     
     print("------------------------------------------------------------------------------------------")
     
-    print("Enter your preference:")
+    print("Enter your preference [1 to \(LoginOptions.allCases.count)] ")
     
     let preference: Int = Validator.getValidSwitchInput(maxValue: LoginOptions.allCases.count)
     
