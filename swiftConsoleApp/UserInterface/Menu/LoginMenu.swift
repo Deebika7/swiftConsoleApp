@@ -15,6 +15,12 @@ struct LoginMenu {
         let phoneNumber: Int = Validator.getValidphoneNumber()
         print("Enter Password ")
         let password: String = Validator.getValidStringInput()
+        if userDataManager.isUserValid(phoneNumber: phoneNumber, password: password) {
+            loginUser(user: userDataManager.getUser(phoneNumber: phoneNumber))
+        }
+        else {
+            print(Messages.signInFailed)
+        }
         
     }
     
@@ -46,10 +52,18 @@ struct LoginMenu {
         guard userDataManager.addUser(name: name, phoneNumber: phoneNumber, password: password, userType: userType) else {
             return
         }
-        print(userDataManager.getUser(phoneNumber: phoneNumber).description)
         print(Messages.successSignUp)
         
         
+    }
+    
+    func  loginUser(user: User) {
+        if user is Admin {
+            //admin login
+        }
+        else {
+            //customer login
+        }
     }
     
 }

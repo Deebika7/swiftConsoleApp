@@ -38,8 +38,4 @@ struct UserDataManager {
     
     
     
-    
-    
-    
-    
 }
