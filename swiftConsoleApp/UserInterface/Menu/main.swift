@@ -27,9 +27,9 @@ MainLoop: while(true){
     
     switch preference {
     case 1:
-        print("1")
+        LoginMenu().signIn()
     case 2:
-        print("2")
+        LoginMenu().signUp()
     case 3:
         break MainLoop
     default:

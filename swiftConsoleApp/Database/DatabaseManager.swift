@@ -25,7 +25,7 @@ class DatabaseManager {
     
     func getUserPasswordFromDB(phoneNumber: Int) -> String? {
         guard let password = DBInstance.accountDb[phoneNumber] else{
-                    return nil
+            return nil
         }
         return password
     }

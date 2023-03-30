@@ -6,7 +6,7 @@
 //
 
 enum LoginOptions: Int, CaseIterable {
-    case sign = 1,
+    case sign_in = 1,
          sign_up = 2,
          quit = 3
 }

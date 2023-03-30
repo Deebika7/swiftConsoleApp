@@ -7,7 +7,7 @@
 
 struct LoginMenu {
     
-    func signIn(){
+    func signIn() {
         print("Enter Phone Number: ")
         let phoneNumber: Int
         print("Enter Password: ")
@@ -24,7 +24,6 @@ struct LoginMenu {
         let password: String
         print("Enter Confirm Password: ")
         let confirmPassword: String
-        
     }
 }
 

@@ -96,7 +96,6 @@
 				163C54E829D41C950083DEE5 /* UserInterface */,
 				163C54B529D2F82C0083DEE5 /* Database */,
 				163C54B029D2F4870083DEE5 /* Core */,
-				163C54A829D2F44C0083DEE5 /* main.swift */,
 			);
 			path = swiftConsoleApp;
 			sourceTree = "<group>";
@@ -152,7 +151,7 @@
 		163C54E829D41C950083DEE5 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
-				163C54F829D468C00083DEE5 /* Utils */,
+				163C54F829D468C00083DEE5 /* Helper */,
 				163C54E929D41CA00083DEE5 /* Menu */,
 			);
 			path = UserInterface;
@@ -165,6 +164,7 @@
 				163C54EA29D41CB40083DEE5 /* AdminMenu.swift */,
 				163C54EC29D41CC40083DEE5 /* CustomerMenu.swift */,
 				163C54EE29D41D2A0083DEE5 /* LoginMenu.swift */,
+				163C54A829D2F44C0083DEE5 /* main.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -179,13 +179,13 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		163C54F829D468C00083DEE5 /* Utils */ = {
+		163C54F829D468C00083DEE5 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				163C54F929D468D70083DEE5 /* Validator.swift */,
 				163C54FE29D55C6B0083DEE5 /* Util.swift */,
 			);
-			path = Utils;
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
