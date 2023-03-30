@@ -22,13 +22,14 @@ MainLoop: while(true){
     print("------------------------------------------------------------------------------------------")
     
     print("Enter your preference:")
-    let preference: Int
+    
+    let preference: Int = Validator.getValidSwitchInput(maxValue: LoginOptions.allCases.count)
     
     switch preference {
     case 1:
-        menu.signIn()
+        print("1")
     case 2:
-        menu.signUp()
+        print("2")
     case 3:
         break MainLoop
     default:

@@ -4,8 +4,11 @@
 //
 //  Created by deebika-pt6680 on 28/03/23.
 //
+
 struct Discount {
-    var description: String
+    var description: String {
+        return ""
+    }
     
     
     private let ID: Int

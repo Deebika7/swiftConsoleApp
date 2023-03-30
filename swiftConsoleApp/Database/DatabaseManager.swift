@@ -7,15 +7,12 @@
 
 class DatabaseManager {
     
-    private let DBInstance = MainDatabase()
+    private var DBInstance = MainDatabase()
     
     private init() {}
     
-    private let DBManagerInstance = DatabaseManager()
+    static var DBManagerInstance = DatabaseManager()
     
-    static func getDBManagerInstance<T: DatabaseManager>() -> T {
-        return DBManagerInstance
-    }
     
     //user functions
     func addPhoneNumberAndPasswordToDB(phoneNumber: Int, password: String) {
@@ -34,12 +31,12 @@ class DatabaseManager {
     }
     
     func addUserToUserDB(phoneNumber: Int, user: User) {
-        DBInstance.userDb[phoneNumber] = User
+        DBInstance.userDb[phoneNumber] = user
     }
     
     //product functions
     func addProductToDB(productName: String, product: Product) {
-        DBInstance.productDb[productName] = Product
+        DBInstance.productDb[productName] = product
     }
     
     func removeProductFromDB(productName: String) {
@@ -50,20 +47,20 @@ class DatabaseManager {
         return DBInstance.productDb.keys.contains(productName)
     }
 
-    func getProductFromDB<T: CustomStringConvertible>(productName: String) -> T? {
-        guard isProductExist(productName) else {
+    func getProductFromDB(productName: String) -> Product? {
+        guard isProductExistInDB(productName: productName) else {
             return nil
         }
         return DBInstance.productDb[productName]
     }
     
-    func getAllProductsFromDB<T: CustomStringConvertible>() -> [T] {
-        return DBInstance.productDb.values
+    func getAllProductsFromDB() -> [Product] {
+        return Array(DBInstance.productDb.values)
     }
     
     //discount functions
     func addDiscountToDB(productName: String, discount: Discount) {
-        DBInstance.discountDb[productName] = Discount
+        DBInstance.discountDb[productName] = discount
     }
     
     func removeDiscountFromDB(productName: String) {
@@ -74,24 +71,24 @@ class DatabaseManager {
         return DBInstance.productDb.keys.contains(productName)
     }
     
-    func getDiscountsFromDB<T: CustomStringConvertible>() -> [T] {
-        return DBInstance.discountDb.values
+    func getDiscountsFromDB() -> [Discount] {
+        return Array(DBInstance.discountDb.values)
     }
     
-    func getDiscountFromDB<T: CustomStringConvertible>(productName: String) -> T {
-        guard isDiscountExist(productName) else {
+    func getDiscountFromDB(productName: String) -> Discount? {
+        guard isDiscountExistInDB(productName: productName) else {
             return nil
         }
         return DBInstance.discountDb[productName]
     }
     //order functions
-    func getAllOrdersFromDB<T: CustomStringConvertible>() -> [T] {
-        return DBInstance.orderDb.values
+    func getAllOrdersFromDB() -> [Order] {
+        return Array(DBInstance.orderDb.values)
     }
     
     //cart functions
     func addProductToCartDB<T: CustomStringConvertible>(product: Product) -> [T] {
-        return
+        return []
     }
     
     func removeProductFromCartDB() {

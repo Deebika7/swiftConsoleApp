@@ -6,7 +6,9 @@
 //
 
 struct Product {
-    var description: String
+    var description: String {
+        return ""
+    }
     
     
     private let ID: Int
@@ -51,11 +53,12 @@ struct Product {
         }
     }
     
-    init(productID: Int, productName: String, productPrice: Double, productQuantity: Int) {
-        self.productID = productID
-        self.productName = productName
-        self.productPrice = productPrice
-        self.productQuantity = productQuantity
+    init(ID: Int, name: String, category: ProductCategory, price: Double, quantity: Int) {
+        self.ID = ID
+        self.name = name
+        self.category = category
+        self.price = price
+        self.quantity = quantity
     }
     
 }

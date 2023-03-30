@@ -30,6 +30,7 @@
 		163C54F429D42D0F0083DEE5 /* CustomerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54F329D42D0F0083DEE5 /* CustomerOptions.swift */; };
 		163C54F629D42D4B0083DEE5 /* LoginOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54F529D42D4B0083DEE5 /* LoginOptions.swift */; };
 		163C54FA29D468D70083DEE5 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54F929D468D70083DEE5 /* Validator.swift */; };
+		163C54FF29D55C6B0083DEE5 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C54FE29D55C6B0083DEE5 /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +70,7 @@
 		163C54F329D42D0F0083DEE5 /* CustomerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerOptions.swift; sourceTree = "<group>"; };
 		163C54F529D42D4B0083DEE5 /* LoginOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOptions.swift; sourceTree = "<group>"; };
 		163C54F929D468D70083DEE5 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		163C54FE29D55C6B0083DEE5 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				163C54F929D468D70083DEE5 /* Validator.swift */,
+				163C54FE29D55C6B0083DEE5 /* Util.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				163C54F229D42CE40083DEE5 /* AdminOptions.swift in Sources */,
 				163C54F629D42D4B0083DEE5 /* LoginOptions.swift in Sources */,
 				163C54C429D2FA310083DEE5 /* Product.swift in Sources */,
+				163C54FF29D55C6B0083DEE5 /* Util.swift in Sources */,
 				163C54A929D2F44C0083DEE5 /* main.swift in Sources */,
 				163C54C229D2F9CF0083DEE5 /* Customer.swift in Sources */,
 				163C54EF29D41D2A0083DEE5 /* LoginMenu.swift in Sources */,
