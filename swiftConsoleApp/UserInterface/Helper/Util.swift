@@ -21,12 +21,13 @@ struct Util {
     static func getValidStringInput() -> String {
         print(">> " , terminator: "")
         if let string = readLine(){
-                return string
+            return string
             }
         else{
             print("Enter characters alone!")
             return getValidStringInput()
         }
+        
     }
 
 }
