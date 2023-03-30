@@ -34,6 +34,10 @@ class DatabaseManager {
         DBInstance.userDb[phoneNumber] = user
     }
     
+    func getUserFromDB(phoneNumber: Int) -> User? {
+        DBInstance.userDb[phoneNumber]
+    }
+    
     //product functions
     func addProductToDB(productName: String, product: Product) {
         DBInstance.productDb[productName] = product

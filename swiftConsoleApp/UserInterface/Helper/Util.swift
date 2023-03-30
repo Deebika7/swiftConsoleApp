@@ -18,16 +18,6 @@ struct Util {
         }
     }
     
-    static func getValidStringInput() -> String {
-        print(">> " , terminator: "")
-        if let string = readLine(){
-            return string
-            }
-        else{
-            print("Enter characters alone!")
-            return getValidStringInput()
-        }
-        
-    }
-
+    
 }
+

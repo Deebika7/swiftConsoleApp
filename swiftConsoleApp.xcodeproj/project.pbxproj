@@ -34,6 +34,7 @@
 		163C551829D5AE790083DEE5 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C551729D5AE790083DEE5 /* UserDataManager.swift */; };
 		163C551A29D5AE8F0083DEE5 /* ProductDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C551929D5AE8F0083DEE5 /* ProductDataManager.swift */; };
 		163C551C29D5AE9F0083DEE5 /* OrderDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C551B29D5AE9F0083DEE5 /* OrderDataManager.swift */; };
+		163C552129D5B29F0083DEE5 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C552029D5B29F0083DEE5 /* Messages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +78,7 @@
 		163C551729D5AE790083DEE5 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		163C551929D5AE8F0083DEE5 /* ProductDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataManager.swift; sourceTree = "<group>"; };
 		163C551B29D5AE9F0083DEE5 /* OrderDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataManager.swift; sourceTree = "<group>"; };
+		163C552029D5B29F0083DEE5 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 			children = (
 				163C54F929D468D70083DEE5 /* Validator.swift */,
 				163C54FE29D55C6B0083DEE5 /* Util.swift */,
+				163C552029D5B29F0083DEE5 /* Messages.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				163C54C629D2FA410083DEE5 /* ProductCategory.swift in Sources */,
 				163C54C029D2F9C00083DEE5 /* Admin.swift in Sources */,
 				163C54F229D42CE40083DEE5 /* AdminOptions.swift in Sources */,
+				163C552129D5B29F0083DEE5 /* Messages.swift in Sources */,
 				163C550E29D5A8E60083DEE5 /* AdminProductManager.swift in Sources */,
 				163C54F629D42D4B0083DEE5 /* LoginOptions.swift in Sources */,
 				163C551829D5AE790083DEE5 /* UserDataManager.swift in Sources */,

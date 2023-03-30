@@ -37,14 +37,26 @@ struct Validator {
         }
         return input
     }
-    static func confirmPasswordVerifier(password: String) -> () {
-        print("password doesn't match try again!")
+    
+    static func confirmPasswordVerifier(password: String) {
         print(">> " , terminator: "")
         let input = readLine()!
         guard input == password else {
+            print("password doesn't match try again!")
             return confirmPasswordVerifier(password: password)
         }
-    
     }
+    
+    static func getValidStringInput() -> String {
+        print(">> " , terminator: "")
+        let string = readLine()!
+        guard  string.firstMatch(of: /[a-zA-Z ]/) != nil else {
+            print("Enter characters alone!")
+            return getValidStringInput()
+        }
+        return string
+    }
+    
+    
     
 }
