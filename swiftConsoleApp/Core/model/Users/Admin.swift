@@ -6,13 +6,10 @@
 //
 
 class Admin: User, CustomStringConvertible {
+    
     var description: String {
         return " "
     }
-    
-    
-    
-    
     
 }
 

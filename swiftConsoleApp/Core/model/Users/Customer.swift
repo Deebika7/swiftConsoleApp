@@ -7,11 +7,6 @@
 
 class Customer: User, CustomStringConvertible {
     
-    //private let customerOrderManager: CustomerOrderManager
-    //private let customerProductManager: CustomerProductDataManager
-    
-    
-    
     var description: String {
         return " "
     }

@@ -24,5 +24,6 @@ struct LoginMenu {
         print("Enter Confirm Password ")
         Validator.confirmPasswordVerifier(password: password)
     }
+    
 }
 
