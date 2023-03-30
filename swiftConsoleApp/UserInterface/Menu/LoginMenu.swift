@@ -8,21 +8,21 @@
 struct LoginMenu {
     
     func signIn() {
-        print("Enter Phone Number: ")
-        let phoneNumber: Int
-        print("Enter Password: ")
-        let password: String
+        print("Enter Phone Number ")
+        let phoneNumber: String = Validator.getValidphoneNumber()
+        print("Enter Password ")
+        let password: String = Util.getValidStringInput()
         
     }
     
     func signUp() {
-        print("Enter Name: ")
+        print("Enter Name ")
         let name: String
-        print("Enter Phone Number: ")
+        print("Enter Phone Number ")
         let phoneNumber: Int
-        print("Enter Password: ")
+        print("Enter Password ")
         let password: String
-        print("Enter Confirm Password: ")
+        print("Enter Confirm Password ")
         let confirmPassword: String
     }
 }

@@ -5,7 +5,7 @@
 //  Created by deebika-pt6680 on 29/03/23.
 //
 
-enum CustomerOptions: Int, CaseIterable{
+enum CustomerOptions: Int, CaseIterable {
     case view_products = 1,
          check_discount = 2,
          add_product_to_cart = 3,
