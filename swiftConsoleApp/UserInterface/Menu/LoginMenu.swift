@@ -7,14 +7,19 @@
 
 struct LoginMenu {
     
+    var userDataManager = UserDataManager()
+    
     func signIn() {
+        
         print("Enter Phone Number ")
         let phoneNumber: Int = Validator.getValidphoneNumber()
         print("Enter Password ")
         let password: String = readLine()!
+        
     }
     
     func signUp() {
+        
         print("Enter Name ")
         let name: String = Util.getValidStringInput()
         print("Enter Phone Number ")
@@ -23,6 +28,7 @@ struct LoginMenu {
         let password: String = Validator.getValidPassword()
         print("Enter Confirm Password ")
         Validator.confirmPasswordVerifier(password: password)
+        
     }
     
 }

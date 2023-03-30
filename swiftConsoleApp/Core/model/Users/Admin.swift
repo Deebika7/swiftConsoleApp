@@ -7,6 +7,9 @@
 
 class Admin: User, CustomStringConvertible {
     
+    weak var customerOrderManager: CustomerOrderManager?
+    weak var customerProductManager: CustomerProductManager?
+    
     var description: String {
         return " "
     }
