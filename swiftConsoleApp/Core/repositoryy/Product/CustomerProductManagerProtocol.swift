@@ -5,6 +5,6 @@
 //  Created by deebika-pt6680 on 30/03/23.
 //
 
-protocol CustomerProductManager: AnyObject {
+protocol CustomerProductManagerProtocol: AnyObject {
     
 }

@@ -7,8 +7,8 @@
 
 class Customer: User {
     
-    weak var adminOrderManager: AdminOrderManager?
-    weak var adminProductManager: AdminProductManager?
+    weak var customerOrderManager: CustomerOrderManagerProtocol?
+    weak var customerProductManager: CustomerProductManagerProtocol?
     
     override var description: String {
         return " "

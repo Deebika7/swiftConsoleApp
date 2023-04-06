@@ -6,51 +6,78 @@
 //
 
 struct AdminMenu {
-    
-    func adminMenu() {
-        AdminMenuLoop: while(true) {
+    var admin: Admin
+    init(admin: Admin) {
+        self.admin = admin
+    }
+    func displayAdminMenu() {
+        var adminMenuLoop = true
+        while(adminMenuLoop) {
             print("------------------------------------------------------------------------------------------")
 
-            for options in AdminOptions.allCases.enumerated() {
-                print("\(options.element.rawValue). \(options.element)")
+            for (index, value) in AdminOptions.allCases.enumerated() {
+                print("\(index + 1). \(value.rawValue)")
             }
             
             print("------------------------------------------------------------------------------------------")
             
             print("Enter your preference [1 to \(AdminOptions.allCases.count)] ")
             
-            let preference: Int = Validator.getValidSwitchInput(maxValue: AdminOptions.allCases.count)
-            //let preferenceInEnum =
-
-            switch preference {
-            case 1:
-                addProduct()
-            case 2:
-                removeProduct()
-            case 3:
-                viewProducts()
-            case 4:
-                addDiscount()
-            case 5:
-                removeDiscount()
-            case 6:
-                viewDiscount()
-            case 7:
+            let preference: Int = InputUtil.getValidNumberInput(minValue: 1,maxValue: AdminOptions.allCases.count)
+            
+            let preferenceEnum = AdminOptions.allCases[preference - 1]
+            
+            switch preferenceEnum {
+            case .listOrders:
                 listOrders()
-            case 8:
-                break AdminMenuLoop
+            case .viewProduct:
+                viewProducts()
+            case .viewDiscounts:
+                viewDiscount()
+            case .addProduct:
+                addProduct()
+            case .addDiscount:
+                addDiscount()
+            case .removeProduct:
+                removeProduct()
+            case .removeDiscount:
+                removeDiscount()
+            case .quit:
+                adminMenuLoop = false
             default:
                 print("invalid input")
             }
+        }
+        
+    }
+    
+    func printProductCategory(){
+        for (index, value) in ProductCategory.allCases.enumerated() {
+            print("\(index + 1). \(value.rawValue)")
         }
     }
     
     func addProduct() {
         
+        print("Select category to add product ")
+        printProductCategory()
+        print("select category from [1 to \(ProductCategory.allCases.count)] ")
+        let productCategory: Int = InputUtil.getValidNumberInput(minValue: 1, maxValue: ProductCategory.allCases.count)
+        let productCategoryEnum: ProductCategory = ProductCategory.allCases[productCategory - 1]
+        print("Enter Product Name ")
+        let productName: String = InputUtil.getValidStringInput()
+        print("Enter Product Quantity ")
+        let productQuantity: Int = InputUtil.getValidProductQuantity()
+        print("Enter Unit Price ")
+        let unitPrice: Double = InputUtil.getValidPrice()
+        print(admin.addProduct(productName: productName, productCategory: productCategoryEnum, unitPrice: unitPrice, productQuantity: productQuantity))
+        
     }
     
     func removeProduct() {
-        
+        print("Enter product name to remove ")
+        let productName: String = InputUtil.getValidStringInput()
+        print(admin.removeProduct(productName: productName))
     }
     
     func viewProducts() {
@@ -58,7 +85,11 @@ struct AdminMenu {
     }
     
     func addDiscount() {
-        
+        print("Enter product name to add discount ")
+        let productName: String = InputUtil.getValidStringInput()
+        print("Enter discount percentage ")
+        let discountPercentage: Double = InputUtil.getValidDiscountPercentage()
+        print(admin.addDiscount(productName: productName, discountPercentage: discountPercentage))
     }
     
     func removeDiscount() {

@@ -7,7 +7,8 @@
 
 
 private let menu = LoginMenu()
-MainLoop: while(true){
+var mainMenuLoop: Bool = true
+ while(mainMenuLoop){
     
     print("------------------------------------------------------------------------------------------")
     
@@ -15,24 +16,25 @@ MainLoop: while(true){
     
     print("------------------------------------------------------------------------------------------")
 
-    for options in LoginOptions.allCases.enumerated() {
-        print("\(options.element.rawValue). \(options.element)")
+    for (index,value) in LoginOptions.allCases.enumerated() {
+        print("\(index + 1). \(value.rawValue)")
     }
     
     print("------------------------------------------------------------------------------------------")
     
     print("Enter your preference [1 to \(LoginOptions.allCases.count)] ")
     
-    let preference: Int = Validator.getValidSwitchInput(maxValue: LoginOptions.allCases.count)
-    
-    switch preference {
-    case 1:
+     let preference: Int = InputUtil.getValidNumberInput(minValue: 1,maxValue: LoginOptions.allCases.count)
+     let preferenceEnum = LoginOptions.allCases[preference - 1]
+    switch preferenceEnum {
+    case .signIn:
         LoginMenu().signIn()
-    case 2:
+    case .signUp:
         LoginMenu().signUp()
-    case 3:
-        break MainLoop
+    case .quit:
+        mainMenuLoop = false
     default:
         print("invalid input")
     }
+     
 }

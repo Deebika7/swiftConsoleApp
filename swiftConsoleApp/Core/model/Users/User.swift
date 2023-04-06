@@ -6,10 +6,10 @@
 //
 
 class User: CustomStringConvertible {
+    
     var description: String {
         return "Name: \(name) phoneNumber: \(phoneNumber)"
     }
-    
     
     private let phoneNumber: Int
     private let name: String

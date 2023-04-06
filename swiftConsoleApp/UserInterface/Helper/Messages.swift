@@ -6,9 +6,13 @@
 //
 
 struct Messages {
-    static let UserAlreadyExist = "User Exist Already"
+    
+    static let userAlreadyExist = "User Exist Already"
     static let successSignUp = "Signed Up Successfully"
     static let successSignIn = "Signed In Successfully"
     static let signInFailed = "Sign In Failed"
     static let signUpFailed = "Sign Up Failed"
+    static let productAlreadyExist = "Product Exist Already"
+    static let productAddedSuccessfully = "Product Added Successfully"
+    
 }

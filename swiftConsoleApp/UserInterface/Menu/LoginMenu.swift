@@ -12,57 +12,69 @@ struct LoginMenu {
     func signIn() {
         
         print("Enter Phone Number ")
-        let phoneNumber: Int = Validator.getValidphoneNumber()
+        let phoneNumber: Int = InputUtil.getValidIntegerInput()
         print("Enter Password ")
-        let password: String = Validator.getValidStringInput()
-        if userDataManager.isUserValid(phoneNumber: phoneNumber, password: password) {
-            loginUser(user: userDataManager.getUser(phoneNumber: phoneNumber))
-        }
-        else {
+        let password: String = InputUtil.getValidStringInput()
+        
+        guard !userDataManager.isUserValid(phoneNumber: phoneNumber, password: password) else {
             print(Messages.signInFailed)
+            return
         }
+        loginUser(user: userDataManager.getUser(phoneNumber: phoneNumber))
+        print(Messages.successSignIn)
+        let user: User = userDataManager.getUser(phoneNumber: phoneNumber)
+        loginUser(user: user)
         
     }
     
     func signUp() {
+        
         print("How would you like to signIn?")
-        print("1. admin\n2. Customer")
-        let preference: Int = Validator.getValidSwitchInput(maxValue: 2)
-        let userType: String
-        if preference == 1 {
-            userType = "admin"
+        
+        for (index, value) in UserType.allCases.enumerated() {
+            print("\(index + 1). \(value.rawValue)")
         }
-        else {
-            userType = "customer"
+        
+        let preference: Int = InputUtil.getValidIntegerInput()
+        let preferenceEnum = UserType.allCases[preference - 1]
+        var userType: UserType
+        switch preferenceEnum {
+        case .admin:
+            userType = .admin
+        case .customer:
+            userType = .customer
         }
+        
         print("Enter Name ")
-        let name: String = Validator.getValidStringInput()
+        let name: String = InputUtil.getValidStringInput()
         print("Enter Phone Number ")
-        let phoneNumber: Int = Validator.getValidphoneNumber()
+        let phoneNumber: Int = InputUtil.getValidphoneNumber()
         print("Enter Password ")
-        let password: String = Validator.getValidPassword()
+        let password: String = InputUtil.getValidPassword()
         print("Enter Confirm Password ")
-        Validator.confirmPasswordVerifier(password: password)
-
+        guard InputUtil.verifyConfirmPassword(password: password) else {
+            return
+        }
         guard !userDataManager.isUserExist(phoneNumber) else {
-            print(Messages.UserAlreadyExist)
+            print(Messages.userAlreadyExist)
             return
         }
         
         guard userDataManager.addUser(name: name, phoneNumber: phoneNumber, password: password, userType: userType) else {
             return
         }
-        print(Messages.successSignUp)
-        
+        print("\(Messages.successSignUp)")
+        let user: User = userDataManager.getUser(phoneNumber: phoneNumber)
+        loginUser(user: user)
         
     }
     
     func  loginUser(user: User) {
-        if user is Admin {
-            //admin login
+        if user as? Admin != nil {
+            AdminMenu(admin: (user as? Admin)!).displayAdminMenu()
         }
-        else {
-            //customer login
+        else if user as? Customer != nil {
+            CustomerMenu(customer: (user as? Customer)!).displayCustomerMenu()
         }
     }
     

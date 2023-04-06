@@ -1,11 +1,12 @@
 //
-//  UserOptions.swift
+//  UserType.swift
 //  swiftConsoleApp
 //
-//  Created by deebika-pt6680 on 30/03/23.
+//  Created by deebika-pt6680 on 31/03/23.
 //
 
-enum UserType {
-    case admin = "admin",
-         customer = "customer"
+
+enum UserType: String, CaseIterable {
+    case admin = "Admin",
+         customer = "Customer"
 }

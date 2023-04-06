@@ -6,38 +6,44 @@
 //
 
 struct CustomerMenu {
-    
-    func customerMenu() {
-        CustomerMenuLoop: while(true) {
+    var customer: Customer
+    init(customer: Customer) {
+        self.customer = customer
+    }
+    func displayCustomerMenu() {
+        while(true) {
             print("------------------------------------------------------------------------------------------")
-
-            for options in CustomerOptions.allCases.enumerated() {
-                print("\(options.element.rawValue). \(options.element)")
+            
+            for (index,value) in CustomerOptions.allCases.enumerated() {
+                print("\(index + 1 ). \(value.rawValue)")
             }
             
             print("------------------------------------------------------------------------------------------")
             
             print("Enter your preference [1 to \(CustomerOptions.allCases.count)] ")
             
-            let preference: Int = Validator.getValidSwitchInput(maxValue: CustomerOptions.allCases.count)
+            let preference: Int = InputUtil.getValidNumberInput(minValue: 1, maxValue: CustomerOptions.allCases.count)
             
-            switch preference {
-            case 1:
+            let preferenceEnum = CustomerOptions.allCases[preference - 1]
+            
+            switch preferenceEnum {
+            case .viewProducts:
                 viewProducts()
-            case 2:
+            case .checkDiscount:
                 viewDiscount()
-            case 3:
+            case .addProductToCart:
                 addProductToCart()
-            case 4:
+            case .removeProductFromCart:
                 removeProductFromCart()
-            case 5:
+            case .viewCart:
                 viewCart()
-            case 6:
-                break CustomerMenuLoop
+            case .quit:
+                break 
             default:
                 print("invalid input")
             }
         }
+        
     }
 
     func viewProducts() {
@@ -49,7 +55,7 @@ struct CustomerMenu {
     }
     
     func addProductToCart() {
-        
+        print("Enter product name: ")
     }
     
     func removeProductFromCart() {

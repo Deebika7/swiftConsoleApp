@@ -13,9 +13,9 @@ struct UserDataManager {
         return databaseManager.isUserExistInDB(phoneNumber: phoneNumber)
     }
     
-    func addUser(name: String, phoneNumber: Int, password: String, userType: String) -> Bool {
+    func addUser(name: String, phoneNumber: Int, password: String, userType: UserType) -> Bool {
         databaseManager.addPhoneNumberAndPasswordToDB(phoneNumber: phoneNumber, password: password)
-        if(userType == "admin") {
+        if(userType == .admin) {
             databaseManager.addUserToUserDB(phoneNumber: phoneNumber, user: Admin(name: name, phoneNumber: phoneNumber))
         }
         else {
@@ -29,7 +29,8 @@ struct UserDataManager {
     }
     
     func isUserValid(phoneNumber: Int, password: String) -> Bool {
-        let storedPassword: String = databaseManager.getUserPasswordFromDB(phoneNumber: phoneNumber)!
+        let storedPassword: String = databaseManager.getUserPasswordFromDB(phoneNumber: phoneNumber) ?? ""
+    
         if password == storedPassword {
             return true
         }
