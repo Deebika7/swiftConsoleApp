@@ -20,15 +20,14 @@ struct InputUtil {
         }
     }
     
-    
     static func getValidStringInput() -> String {
         print(">> " , terminator: "")
         let string = readLine()!
-        guard string.range(of: #"^[a-zA-Z ]$"#, options: .regularExpression) != nil else {
-            print("Enter characters alone!")
-            return getValidStringInput()
+        if string.range(of: #"^[a-zA-Z ]{3}$"#, options: .regularExpression) != nil {
+            return string
         }
-        return string
+        print("Enter characters alone!")
+        return getValidStringInput()
     }
     
     static func getValidNumberInput(minValue: Int, maxValue: Int) -> Int {
@@ -52,7 +51,6 @@ struct InputUtil {
         return Int(phoneNumber)!
     }
     
-
     static func getValidPassword() -> String {
         print("password must have minimum 8 characters at least and 1 Number")
         let input: String = readLine()!
