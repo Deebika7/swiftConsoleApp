@@ -13,8 +13,11 @@ struct Messages {
     static let signInFailed = "Sign In Failed"
     static let signUpFailed = "Sign Up Failed"
     static let productAlreadyExist = "Product Exist Already"
-    static let productAddedSuccessfully = "Product Added Successfully"
+    static let productAdded = "Product Added Successfully"
     static let noProductExist = "Product doesn't Exist"
     static let productRemoved = "Product Removed Successfully"
-    
+    static let discountRemoved = "Discount Removed Successfully"
+    static let discounAdded = "Discount Added Successfully"
+    static let noDiscountExist = "Discount doesn't Exist"
+    static let discountAlreadyExist = "Discount Exist Already"
 }

@@ -14,10 +14,8 @@ struct InputUtil {
         if let input = Int(readLine()!) {
             return input
         }
-        
         print("Enter a valid integer")
         return getValidIntegerInput()
-        
     }
     
     static func getValidStringInput() -> String {
@@ -95,7 +93,7 @@ struct InputUtil {
         print(">> " , terminator: "")
         print("Discount percentage must be between 0 to 100")
         let input: Double = getValidDoubleInput()
-        if input <= 0 && input > 100 {
+        if input >= 0 && input <= 100 {
             return input
         }
         return getValidDiscountPercentage()

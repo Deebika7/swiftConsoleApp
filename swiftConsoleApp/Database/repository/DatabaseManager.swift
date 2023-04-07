@@ -13,7 +13,6 @@ class DatabaseManager {
     
     static var DBManagerInstance = DatabaseManager()
     
-    
     //user functions
     func addPhoneNumberAndPasswordToDB(phoneNumber: Int, password: String) {
         DBInstance.accountDb[phoneNumber] = password
@@ -52,10 +51,10 @@ class DatabaseManager {
     }
 
     func getProductFromDB(productName: String) -> Product? {
-        guard isProductExistInDB(productName: productName) else {
-            return nil
+        if isProductExistInDB(productName: productName)  {
+            return DBInstance.productDb[productName]
         }
-        return DBInstance.productDb[productName]
+        return nil
     }
     
     func getAllProductsFromDB() -> [Product] {
@@ -67,12 +66,18 @@ class DatabaseManager {
         DBInstance.discountDb[productName] = discount
     }
     
-    func removeDiscountFromDB(productName: String) {
-        DBInstance.productDb.removeValue(forKey: productName)
+    func removeDiscountFromDB(discountID: Int) -> String {
+        for (key,value) in DBInstance.discountDb {
+            if(value.discountID == discountID){
+                DBInstance.discountDb.removeValue(forKey: key)
+                return Messages.discountRemoved
+            }
+        }
+        return Messages.noDiscountExist
     }
     
     func isDiscountExistInDB(productName: String) -> Bool {
-        return DBInstance.productDb.keys.contains(productName)
+        return DBInstance.discountDb.keys.contains(productName)
     }
     
     func getDiscountsFromDB() -> [Discount] {
@@ -107,6 +112,7 @@ class DatabaseManager {
     func UpdateCartToDB() -> () {
         
     }
+    
 }
 
 

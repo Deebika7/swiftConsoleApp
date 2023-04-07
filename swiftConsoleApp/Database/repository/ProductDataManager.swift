@@ -5,12 +5,16 @@
 //  Created by deebika-pt6680 on 30/03/23.
 //
 
-class ProductDataManager: AdminOrderManagerProtocol, AdminProductManagerProtocol {
+class ProductDataManager: AdminProductManagerProtocol, CustomerProductManagerProtocol {
     
     var databaseManager = DatabaseManager.DBManagerInstance
     
+    func checkIfProductExist(productName: String) -> Bool {
+        return databaseManager.isProductExistInDB(productName: productName)
+    }
+    
     func addProduct(product: Product) -> Bool {
-        if databaseManager.isProductExistInDB(productName: product.productName) {
+        if !databaseManager.isProductExistInDB(productName: product.productName) {
             databaseManager.addProductToDB(productName: product.productName, product: product)
             return true
         }
@@ -26,11 +30,18 @@ class ProductDataManager: AdminOrderManagerProtocol, AdminProductManagerProtocol
     }
     
     func addDiscount(productName: String, discount: Discount) -> String {
-        return ""
+        if databaseManager.isDiscountExistInDB(productName: productName) {
+            return Messages.discountAlreadyExist
+        }
+        databaseManager.addDiscountToDB(productName: productName, discount: discount)
+        return Messages.discounAdded
     }
     
     func removeDiscount(discountID: Int) -> String {
-        return ""
+        return databaseManager.removeDiscountFromDB(discountID: discountID)
     }
     
+    func isDiscountExist(productName: String) -> Bool {
+        return databaseManager.isDiscountExistInDB(productName: productName)
+    }
 }

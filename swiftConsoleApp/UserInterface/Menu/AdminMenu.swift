@@ -11,7 +11,7 @@ struct AdminMenu {
         self.admin = admin
     }
     func displayAdminMenu() {
-        var adminMenuLoop = true
+        var adminMenuLoop: Bool = true
         while(adminMenuLoop) {
             print("Admin Menu")
             print("------------------------------------------------------------------------------------------")
@@ -49,7 +49,6 @@ struct AdminMenu {
                 print("invalid input")
             }
         }
-        
     }
     
     func printProductCategory(){
@@ -59,7 +58,6 @@ struct AdminMenu {
     }
     
     func addProduct() {
-        
         print("Select category to add product ")
         printProductCategory()
         print("select category from [1 to \(ProductCategory.allCases.count)] ")
@@ -71,9 +69,8 @@ struct AdminMenu {
         let productQuantity: Int = InputUtil.getValidProductQuantity()
         print("Enter Unit Price ")
         let unitPrice: Double = InputUtil.getValidPrice()
-        let status = admin.addProduct(productName: productName, productCategory: productCategoryEnum, unitPrice: unitPrice, productQuantity: productQuantity) ?? false
-        if status {
-            print(Messages.productAddedSuccessfully)
+        if admin.addProduct(productName: productName, productCategory: productCategoryEnum, unitPrice: unitPrice, productQuantity: productQuantity) {
+            print(Messages.productAdded)
         }
         else {
             print(Messages.productAlreadyExist)
@@ -83,8 +80,7 @@ struct AdminMenu {
     func removeProduct() {
         print("Enter product name to remove ")
         let productName: String = InputUtil.getValidStringInput()
-        print(admin.removeProduct(productName: productName) ?? "")
-        
+        print(admin.removeProduct(productName: productName))
     }
     func viewProducts() {
         
@@ -93,13 +89,19 @@ struct AdminMenu {
     func addDiscount() {
         print("Enter product name to add discount ")
         let productName: String = InputUtil.getValidStringInput()
+        guard admin.checkIfProductExist(productName: productName) else {
+            print(Messages.noProductExist)
+            return
+        }
         print("Enter discount percentage ")
         let discountPercentage: Double = InputUtil.getValidDiscountPercentage()
-        print(admin.addDiscount(productName: productName, discountPercentage: discountPercentage)! as Any)
+        print(admin.addDiscount(productName: productName, discountPercentage: discountPercentage))
     }
     
     func removeDiscount() {
-        
+        print("Enter discount ID to remove ")
+        let discountID: Int = InputUtil.getValidIntegerInput()
+        print(admin.removeDiscount(discountID: discountID))
     }
     
     func viewDiscount() {
