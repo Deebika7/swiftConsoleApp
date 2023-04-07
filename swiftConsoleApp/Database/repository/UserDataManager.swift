@@ -28,13 +28,15 @@ struct UserDataManager {
         return true
     }
     
-    func getUser(phoneNumber: Int) -> User {
-      return  databaseManager.getUserFromDB(phoneNumber: phoneNumber)!
+    func getUser(phoneNumber: Int) -> User? {
+        if  databaseManager.getUserFromDB(phoneNumber: phoneNumber) != nil {
+            return databaseManager.getUserFromDB(phoneNumber: phoneNumber)
+        }
+        return nil
     }
     
     func isUserValid(phoneNumber: Int, password: String) -> Bool {
         let storedPassword: String = databaseManager.getUserPasswordFromDB(phoneNumber: phoneNumber) ?? ""
-    
         if password == storedPassword {
             return true
         }

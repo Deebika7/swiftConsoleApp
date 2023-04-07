@@ -34,7 +34,7 @@ class DatabaseManager {
     }
     
     func getUserFromDB(phoneNumber: Int) -> User? {
-        DBInstance.userDb[phoneNumber]
+        return DBInstance.userDb[phoneNumber]
     }
     
     //product functions

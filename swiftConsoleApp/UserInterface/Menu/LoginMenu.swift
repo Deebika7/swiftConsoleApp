@@ -16,14 +16,18 @@ struct LoginMenu {
         print("Enter Password ")
         let password: String = InputUtil.getValidStringInput()
         
-        guard !userDataManager.isUserValid(phoneNumber: phoneNumber, password: password) else {
+        guard userDataManager.isUserValid(phoneNumber: phoneNumber, password: password) else {
             print(Messages.signInFailed)
             return
         }
-        loginUser(user: userDataManager.getUser(phoneNumber: phoneNumber))
+        guard userDataManager.getUser(phoneNumber: phoneNumber) != nil else {
+            return
+        }
         print(Messages.successSignIn)
-        let user: User = userDataManager.getUser(phoneNumber: phoneNumber)
-        loginUser(user: user)
+        if let user: User = userDataManager.getUser(phoneNumber: phoneNumber)  {
+            loginUser(user: user)
+        }
+        
         
     }
     
@@ -64,8 +68,10 @@ struct LoginMenu {
             return
         }
         print("\(Messages.successSignUp)")
-        let user: User = userDataManager.getUser(phoneNumber: phoneNumber)
-        loginUser(user: user)
+        if let user: User = userDataManager.getUser(phoneNumber: phoneNumber){
+            loginUser(user: user)
+        }
+        
         
     }
     

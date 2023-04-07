@@ -29,7 +29,7 @@ class Admin: User {
         return adminProductManager.removeProduct(productName: productName)
     }
 
-    func viewProducts() {
+    func getProducts() {
         
     }
     
