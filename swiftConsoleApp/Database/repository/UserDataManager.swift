@@ -7,6 +7,10 @@
 
 struct UserDataManager {
     
+    init(){
+        databaseManager.addUserToUserDB(phoneNumber: 9876543210, user: Admin(name: "test", phoneNumber: 9876543210))
+    }
+    
     var databaseManager = DatabaseManager.DBManagerInstance
     
     func isUserExist(_ phoneNumber: Int) -> Bool {

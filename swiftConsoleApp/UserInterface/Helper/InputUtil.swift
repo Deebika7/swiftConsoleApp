@@ -11,23 +11,32 @@ struct InputUtil {
     
     static func getValidIntegerInput() -> Int {
         print(">> " , terminator: "")
-        if let integer = Int(readLine()!) {
-            return integer
+        if let input = Int(readLine()!) {
+            return input
         }
-        else {
-            print("Enter a valid integer")
-            return getValidIntegerInput()
-        }
+        
+        print("Enter a valid integer")
+        return getValidIntegerInput()
+        
     }
     
     static func getValidStringInput() -> String {
         print(">> " , terminator: "")
+        if let input = readLine() {
+            return String(input)
+        }
+        print("Enter characters only")
+        return getValidStringInput()
+    }
+    
+    static func getValidName() -> String {
+        print("Name should not contain any special characters, numbers and must contain minimum of 3 characters of length")
+        print(">> " , terminator: "")
         let string = readLine()!
-        if string.range(of: #"^[a-zA-Z ]{3}$"#, options: .regularExpression) != nil {
+        if string.range(of: #"^[a-zA-Z ]{3,}$"#, options: .regularExpression) != nil {
             return string
         }
-        print("Enter characters alone!")
-        return getValidStringInput()
+        return getValidName()
     }
     
     static func getValidNumberInput(minValue: Int, maxValue: Int) -> Int {
@@ -94,7 +103,6 @@ struct InputUtil {
     
     static func getValidPrice() -> Double {
         print("product quantity value should be greater than 0")
-        print(">> " , terminator: "")
         let input: Double = getValidDoubleInput()
         if  input > 0 {
             return input
@@ -110,6 +118,6 @@ struct InputUtil {
         }
         return getValidProductQuantity()
     }
-
+    
 }
 

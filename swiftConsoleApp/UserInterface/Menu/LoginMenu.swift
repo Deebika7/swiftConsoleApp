@@ -46,7 +46,7 @@ struct LoginMenu {
         }
         
         print("Enter Name ")
-        let name: String = InputUtil.getValidStringInput()
+        let name: String = InputUtil.getValidName()
         print("Enter Phone Number ")
         let phoneNumber: Int = InputUtil.getValidphoneNumber()
         print("Enter Password ")

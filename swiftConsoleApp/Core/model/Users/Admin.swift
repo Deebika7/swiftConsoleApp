@@ -10,9 +10,10 @@ class Admin: User {
     weak var adminOrderManager: AdminOrderManagerProtocol?
     weak var adminProductManager: AdminProductManagerProtocol?
     
-    func addProduct(productName: String, productCategory: ProductCategory, unitPrice: Double, productQuantity: Int) -> String? {
-        var product: Product = Product(ID: Int.random(in: 1 ... 1000000), name: productName, category: productCategory, price: unitPrice, quantity: productQuantity)
-       return adminProductManager?.addProduct(product: product)
+    func addProduct(productName: String, productCategory: ProductCategory, unitPrice: Double, productQuantity: Int) -> Bool? {
+        let product: Product = Product(ID: Int.random(in: 1 ... 1000000), name: productName, category: productCategory, price: unitPrice, quantity: productQuantity)
+        return adminProductManager?.addProduct(product: product)
+            
     }
     
     func removeProduct(productName: String) -> String? {

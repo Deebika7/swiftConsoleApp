@@ -13,8 +13,9 @@ struct AdminMenu {
     func displayAdminMenu() {
         var adminMenuLoop = true
         while(adminMenuLoop) {
+            print("Admin Menu")
             print("------------------------------------------------------------------------------------------")
-
+            
             for (index, value) in AdminOptions.allCases.enumerated() {
                 print("\(index + 1). \(value.rawValue)")
             }
@@ -70,16 +71,21 @@ struct AdminMenu {
         let productQuantity: Int = InputUtil.getValidProductQuantity()
         print("Enter Unit Price ")
         let unitPrice: Double = InputUtil.getValidPrice()
-        print(admin.addProduct(productName: productName, productCategory: productCategoryEnum, unitPrice: unitPrice, productQuantity: productQuantity))
-        
+        let status = admin.addProduct(productName: productName, productCategory: productCategoryEnum, unitPrice: unitPrice, productQuantity: productQuantity) ?? false
+        if status {
+            print(Messages.productAddedSuccessfully)
+        }
+        else {
+            print(Messages.productAlreadyExist)
+        }
     }
     
     func removeProduct() {
         print("Enter product name to remove ")
         let productName: String = InputUtil.getValidStringInput()
-        print(admin.removeProduct(productName: productName))
+        print(admin.removeProduct(productName: productName) ?? "")
+        
     }
-    
     func viewProducts() {
         
     }
@@ -89,7 +95,7 @@ struct AdminMenu {
         let productName: String = InputUtil.getValidStringInput()
         print("Enter discount percentage ")
         let discountPercentage: Double = InputUtil.getValidDiscountPercentage()
-        print(admin.addDiscount(productName: productName, discountPercentage: discountPercentage))
+        print(admin.addDiscount(productName: productName, discountPercentage: discountPercentage)! as Any)
     }
     
     func removeDiscount() {

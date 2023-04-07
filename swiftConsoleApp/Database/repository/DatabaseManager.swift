@@ -85,6 +85,7 @@ class DatabaseManager {
         }
         return DBInstance.discountDb[productName]
     }
+    
     //order functions
     func getAllOrdersFromDB() -> [Order] {
         return Array(DBInstance.orderDb.values)

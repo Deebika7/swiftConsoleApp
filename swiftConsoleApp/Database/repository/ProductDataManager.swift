@@ -9,16 +9,20 @@ class ProductDataManager: AdminOrderManagerProtocol, AdminProductManagerProtocol
     
     var databaseManager = DatabaseManager.DBManagerInstance
     
-    func addProduct(product: Product) -> String {
+    func addProduct(product: Product) -> Bool {
         if databaseManager.isProductExistInDB(productName: product.productName) {
-            return Messages.productAlreadyExist
+            databaseManager.addProductToDB(productName: product.productName, product: product)
+            return true
         }
-        databaseManager.addProductToDB(productName: product.productName, product: product)
-        return Messages.productAddedSuccessfully
+        return false
     }
     
     func removeProduct(productName: String) -> String {
-        return ""
+        if databaseManager.isProductExistInDB(productName: productName) {
+            databaseManager.removeProductFromDB(productName: productName)
+            return Messages.productRemoved
+        }
+        return Messages.noProductExist
     }
     
     func addDiscount(productName: String, discount: Discount) -> String {

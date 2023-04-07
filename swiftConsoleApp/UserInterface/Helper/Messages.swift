@@ -14,5 +14,7 @@ struct Messages {
     static let signUpFailed = "Sign Up Failed"
     static let productAlreadyExist = "Product Exist Already"
     static let productAddedSuccessfully = "Product Added Successfully"
+    static let noProductExist = "Product doesn't Exist"
+    static let productRemoved = "Product Removed Successfully"
     
 }
