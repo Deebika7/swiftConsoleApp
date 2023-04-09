@@ -6,5 +6,6 @@
 //
 
 protocol CustomerProductManagerProtocol: AnyObject {
-    
+    func getAllProduct() -> [Product]
+    func getAllDiscount() -> [String: Discount]
 }

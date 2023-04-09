@@ -31,8 +31,7 @@ class Admin: User {
     }
 
     func getProducts() -> [Product] {
-        return adminProductManager.getAllProduct()
-        
+        adminProductManager.getAllProduct()
     }
     
     func addDiscount(productName: String, discountPercentage: Double) -> String {

@@ -47,24 +47,35 @@ struct CustomerMenu {
     }
 
     func viewProducts() {
-//        guard !admin.getProducts().isEmpty else {
-//            print(Messages.noProductExist)
-//            return
-//        }
-//        print("Select category to view products")
-//        printProductCategory()
-//        let productPreference: Int = InputUtil.getValidNumberInput(minValue: 1, maxValue: ProductCategory.allCases.count)
-//        let productPreferenceEnum: ProductCategory = ProductCategory.allCases[productPreference - 1]
-//        let products: [Product] = admin.getProducts()
-//        print("==========================\t\(productPreferenceEnum)\t===============================================")
-//        print("=====================================================================================");
-//        print("Product ID\t|\tProduct Name\t|\tunit price\t|\tAvailable quantity");
-//        print("=====================================================================================");
-//        products.filter { $0.productCategory == productPreferenceEnum }.forEach{print("\($0.productID)\t\t\t\($0.productName)\t\t\t\t\t\($0.productPrice)\t\t\t\t\($0.productQuantity)")}
+        guard !customer.getProducts().isEmpty else {
+            print(Messages.noProductExist)
+            return
+        }
+        print("Select category to view products")
+        printProductCategory()
+        let productPreference: Int = InputUtil.getValidNumberInput(minValue: 1, maxValue: ProductCategory.allCases.count)
+        let productPreferenceEnum: ProductCategory = ProductCategory.allCases[productPreference - 1]
+        let products: [Product] = customer.getProducts()
+        print("==========================\t\(productPreferenceEnum)\t===============================================")
+        print("=====================================================================================");
+        print("Product ID\t|\tProduct Name\t|\tunit price\t|\tAvailable quantity");
+        print("=====================================================================================");
+        products.filter { $0.productCategory == productPreferenceEnum }.forEach{print("\($0.productID)\t\t\t\($0.productName)\t\t\t\t\t\($0.productPrice)\t\t\t\t\($0.productQuantity)")}
     }
     
     func viewDiscount() {
-        
+        guard !customer.getDiscounts().isEmpty else {
+            print(Messages.noDiscountExist)
+            return
+        }
+        let discounts: [String:Discount] = customer.getDiscounts()
+        discounts.forEach{ discount in
+            print("=========================================================")
+            print("Discount ID\t|\tProduct Name\t|\tDiscount Percentage")
+            print("=========================================================")
+            print("\(discount.value.discountID)\t\t\t\(discount.key)\t\t\t\t\t\(discount.value.discountPercentage)")
+            print("=========================================================")
+        }
     }
     
     func addProductToCart() {

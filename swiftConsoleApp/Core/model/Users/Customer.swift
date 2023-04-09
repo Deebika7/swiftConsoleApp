@@ -20,5 +20,24 @@ class Customer: User {
         return " "
     }
     
+    func getDiscounts() -> [String: Discount] {
+        customerProductManager.getAllDiscount()
+    }
+    
+    func getProducts() -> [Product] {
+        customerProductManager.getAllProduct()
+    }
+    
+    func addProductToCart() {
+        
+    }
+    
+    func getCart() {
+        
+    }
+    
+    func removeProductFromCart() {
+        
+    }
 }
 
