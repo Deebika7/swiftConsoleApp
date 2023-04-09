@@ -19,7 +19,7 @@ class DatabaseManager {
     }
     
     func isUserExistInDB(phoneNumber: Int) -> Bool {
-        return DBInstance.accountDb.keys.contains(phoneNumber)
+        DBInstance.accountDb.keys.contains(phoneNumber)
     }
     
     func getUserPasswordFromDB(phoneNumber: Int) -> String? {
@@ -34,7 +34,7 @@ class DatabaseManager {
     }
     
     func getUserFromDB(phoneNumber: Int) -> User? {
-        return DBInstance.userDb[phoneNumber]
+        DBInstance.userDb[phoneNumber]
     }
     
     //product functions
@@ -47,7 +47,7 @@ class DatabaseManager {
     }
     
     func isProductExistInDB(productName: String) -> Bool {
-        return DBInstance.productDb.keys.contains(productName)
+        DBInstance.productDb.keys.contains(productName)
     }
 
     func getProductFromDB(productName: String) -> Product? {
@@ -58,7 +58,7 @@ class DatabaseManager {
     }
     
     func getAllProductsFromDB() -> [Product] {
-        return Array(DBInstance.productDb.values)
+        Array(DBInstance.productDb.values)
     }
     
     //discount functions
@@ -66,22 +66,16 @@ class DatabaseManager {
         DBInstance.discountDb[productName] = discount
     }
     
-    func removeDiscountFromDB(discountID: Int) -> String {
-        for (key,value) in DBInstance.discountDb {
-            if(value.discountID == discountID){
-                DBInstance.discountDb.removeValue(forKey: key)
-                return Messages.discountRemoved
-            }
-        }
-        return Messages.noDiscountExist
+    func removeDiscountFromDB(productName: String) {
+        DBInstance.discountDb.removeValue(forKey: productName)
     }
     
     func isDiscountExistInDB(productName: String) -> Bool {
-        return DBInstance.discountDb.keys.contains(productName)
+        DBInstance.discountDb.keys.contains(productName)
     }
     
-    func getDiscountsFromDB() -> [Discount] {
-        return Array(DBInstance.discountDb.values)
+    func getDiscountsFromDB() -> [String:Discount] {
+        DBInstance.discountDb
     }
     
     func getDiscountFromDB(productName: String) -> Discount? {
@@ -93,7 +87,7 @@ class DatabaseManager {
     
     //order functions
     func getAllOrdersFromDB() -> [Order] {
-        return Array(DBInstance.orderDb.values)
+        Array(DBInstance.orderDb.values)
     }
     
     //cart functions

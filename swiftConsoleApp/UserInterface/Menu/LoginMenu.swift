@@ -20,14 +20,11 @@ struct LoginMenu {
             print(Messages.signInFailed)
             return
         }
-        guard userDataManager.getUser(phoneNumber: phoneNumber) != nil else {
-            return
-        }
-        print(Messages.successSignIn)
+        
         if let user: User = userDataManager.getUser(phoneNumber: phoneNumber)  {
+            print(Messages.successSignIn)
             loginUser(user: user)
         }
-        
         
     }
     
@@ -38,7 +35,6 @@ struct LoginMenu {
         for (index, value) in UserType.allCases.enumerated() {
             print("\(index + 1). \(value.rawValue)")
         }
-        
         let preference: Int = InputUtil.getValidIntegerInput()
         let preferenceEnum = UserType.allCases[preference - 1]
         var userType: UserType
@@ -63,16 +59,13 @@ struct LoginMenu {
             print(Messages.userAlreadyExist)
             return
         }
-        
         guard userDataManager.addUser(name: name, phoneNumber: phoneNumber, password: password, userType: userType) else {
             return
         }
         print("\(Messages.successSignUp)")
-        if let user: User = userDataManager.getUser(phoneNumber: phoneNumber){
+        if let user: User = userDataManager.getUser(phoneNumber: phoneNumber) {
             loginUser(user: user)
         }
-        
-        
     }
     
     func  loginUser(user: User) {

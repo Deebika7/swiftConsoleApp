@@ -9,6 +9,7 @@ struct UserDataManager {
     
     init(){
         databaseManager.addUserToUserDB(phoneNumber: 9876543210, user: Admin(name: "test", phoneNumber: 9876543210, adminOrderManager: OrderDataManager(), adminProductManager: ProductDataManager()))
+        databaseManager.addPhoneNumberAndPasswordToDB(phoneNumber: 9876543210, password: "test1234")
     }
     
     var databaseManager = DatabaseManager.DBManagerInstance

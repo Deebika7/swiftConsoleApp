@@ -17,7 +17,7 @@ class Admin: User {
     }
     
     func checkIfProductExist(productName: String) -> Bool {
-        return adminProductManager.checkIfProductExist(productName: productName)
+        adminProductManager.checkIfProductExist(productName: productName)
     }
     
     func addProduct(productName: String, productCategory: ProductCategory, unitPrice: Double, productQuantity: Int) -> Bool {
@@ -26,24 +26,26 @@ class Admin: User {
     }
     
     func removeProduct(productName: String) -> String {
+        adminProductManager.removeDiscount(productName: productName)
         return adminProductManager.removeProduct(productName: productName)
     }
 
-    func getProducts() {
+    func getProducts() -> [Product] {
+        return adminProductManager.getAllProduct()
         
     }
     
     func addDiscount(productName: String, discountPercentage: Double) -> String {
-        var discount: Discount = Discount(ID: Int.random(in: 1 ... 1000000), percentage: discountPercentage)
+        let discount: Discount = Discount(ID: Int.random(in: 1 ... 1000000), percentage: discountPercentage)
         return adminProductManager.addDiscount(productName: productName, discount: discount)
     }
     
-    func removeDiscount(discountID: Int) -> String {
-        return adminProductManager.removeDiscount(discountID: discountID)
+    func removeDiscount(productName: String) -> String {
+        adminProductManager.removeDiscount(productName: productName)
     }
     
-    func viewDiscount() {
-        
+    func getDiscounts() -> [String: Discount] {
+        adminProductManager.getAllDiscount()
     }
     
     func listOrders() {

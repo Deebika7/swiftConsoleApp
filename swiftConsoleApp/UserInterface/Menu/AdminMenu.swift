@@ -26,7 +26,7 @@ struct AdminMenu {
             
             let preference: Int = InputUtil.getValidNumberInput(minValue: 1,maxValue: AdminOptions.allCases.count)
             
-            let preferenceEnum = AdminOptions.allCases[preference - 1]
+            let preferenceEnum: AdminOptions = AdminOptions.allCases[preference - 1]
             
             switch preferenceEnum {
             case .listOrders:
@@ -82,8 +82,22 @@ struct AdminMenu {
         let productName: String = InputUtil.getValidStringInput()
         print(admin.removeProduct(productName: productName))
     }
+    
     func viewProducts() {
-        
+        guard !admin.getProducts().isEmpty else {
+            print(Messages.noProductExist)
+            return
+        }
+        print("Select category to view products")
+        printProductCategory()
+        let productPreference: Int = InputUtil.getValidNumberInput(minValue: 1, maxValue: ProductCategory.allCases.count)
+        let productPreferenceEnum: ProductCategory = ProductCategory.allCases[productPreference - 1]
+        let products: [Product] = admin.getProducts()
+        print("==========================\t\(productPreferenceEnum)\t===============================================")
+        print("=====================================================================================");
+        print("Product ID\t|\tProduct Name\t|\tunit price\t|\tAvailable quantity");
+        print("=====================================================================================");
+        products.filter { $0.productCategory == productPreferenceEnum }.forEach{print("\($0.productID)\t\t\t\($0.productName)\t\t\t\t\t\($0.productPrice)\t\t\t\t\($0.productQuantity)")}
     }
     
     func addDiscount() {
@@ -99,13 +113,24 @@ struct AdminMenu {
     }
     
     func removeDiscount() {
-        print("Enter discount ID to remove ")
-        let discountID: Int = InputUtil.getValidIntegerInput()
-        print(admin.removeDiscount(discountID: discountID))
+        print("Enter product to remove discount")
+        let productName: String = InputUtil.getValidStringInput()
+        print(admin.removeDiscount(productName: productName))
     }
     
     func viewDiscount() {
-        
+        guard !admin.getDiscounts().isEmpty else {
+            print(Messages.noDiscountExist)
+            return
+        }
+        let discounts: [String:Discount] = admin.getDiscounts()
+        discounts.forEach{ discount in
+            print("=========================================================")
+            print("Discount ID\t|\tProduct Name\t|\tDiscount Percentage")
+            print("=========================================================")
+            print("\(discount.value.discountID)\t\t\t\(discount.key)\t\t\t\t\t\(discount.value.discountPercentage)")
+            print("=========================================================")
+        }
     }
     
     func listOrders() {

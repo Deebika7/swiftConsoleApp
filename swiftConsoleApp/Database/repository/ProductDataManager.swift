@@ -10,7 +10,7 @@ class ProductDataManager: AdminProductManagerProtocol, CustomerProductManagerPro
     var databaseManager = DatabaseManager.DBManagerInstance
     
     func checkIfProductExist(productName: String) -> Bool {
-        return databaseManager.isProductExistInDB(productName: productName)
+        databaseManager.isProductExistInDB(productName: productName)
     }
     
     func addProduct(product: Product) -> Bool {
@@ -37,11 +37,23 @@ class ProductDataManager: AdminProductManagerProtocol, CustomerProductManagerPro
         return Messages.discounAdded
     }
     
-    func removeDiscount(discountID: Int) -> String {
-        return databaseManager.removeDiscountFromDB(discountID: discountID)
+    func removeDiscount(productName: String) -> String {
+        if databaseManager.isDiscountExistInDB(productName: productName) {
+            databaseManager.removeDiscountFromDB(productName: productName)
+            return Messages.discountRemoved
+        }
+        return Messages.noDiscountExist
     }
     
     func isDiscountExist(productName: String) -> Bool {
-        return databaseManager.isDiscountExistInDB(productName: productName)
+        databaseManager.isDiscountExistInDB(productName: productName)
+    }
+    
+    func getAllProduct() -> [Product] {
+        databaseManager.getAllProductsFromDB()
+    }
+    
+    func getAllDiscount() -> [String:Discount] {
+        databaseManager.getDiscountsFromDB()
     }
 }
