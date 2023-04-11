@@ -118,15 +118,15 @@ class OrderDataManager: AdminOrderManagerProtocol, CustomerOrderManagerProtocol 
     
     func addToOrders(customer: Customer) {
         if let cart: [Cart] = databaseManager.getCartFromDB(phoneNumber: customer.getPhoneNumber) {
-            databaseManager.addOrdersToDB(phoneNumber: customer.getPhoneNumber, order: Order(customer: customer, cart: getCart(phoneNumber: customer.getPhoneNumber) ?? [] ))
+            databaseManager.addOrdersToDB(phoneNumber: customer.getPhoneNumber, order: Order(customer: customer, cart: getCart(phoneNumber: customer.getPhoneNumber)))
         }
     }
     
      func placeOrder(phoneNumber: Int) -> String {
         if let cart: [Cart] = databaseManager.getCartFromDB(phoneNumber: phoneNumber) {
             cart.forEach{
-                if var product: Product = databaseManager.getProductFromDB(productName: $0.cartProduct.productName) {
-                    var quantity: Int = product.productQuantity - $0.cartProduct.productQuantity
+                if let product: Product = databaseManager.getProductFromDB(productName: $0.cartProduct.productName) {
+                    let quantity: Int = product.productQuantity - $0.cartProduct.productQuantity
                     databaseManager.updateProductQuantity(product: product, quantity: quantity)
                 }
             }

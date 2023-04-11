@@ -101,7 +101,7 @@ struct AdminMenu {
             print("=====================================================================================");
             products.filter { $0.productCategory == productPreferenceEnum }.forEach{print("\($0.productID)\t\t\t\($0.productName)\t\t\t\t\t\($0.productPrice)\t\t\t\t\($0.productQuantity)")}
             print("=====================================================================================");
-            print("Would you like to view more products? [Y] or type anything to exit")
+            print("Would you like to view more products? [Y/y] or type anything to exit")
             moreProducts = InputUtil.getValidStringInput()
         }
     }
@@ -140,7 +140,7 @@ struct AdminMenu {
     }
     
     func listOrders() {
-        var orders: [String] = admin.listOrders()
+        let orders: [String] = admin.listOrders()
         orders.forEach {
             print($0)
         }

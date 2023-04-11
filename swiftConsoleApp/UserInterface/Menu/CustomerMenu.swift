@@ -31,12 +31,12 @@ struct CustomerMenu {
                 viewProducts()
             case .checkDiscount:
                 viewDiscount()
+            case .viewCart:
+                viewCart()
             case .addProductToCart:
                 addProductToCart()
             case .removeProductFromCart:
                 removeProductFromCart()
-            case .viewCart:
-                viewCart()
             case .quit:
                 logout()
                 return
@@ -44,7 +44,6 @@ struct CustomerMenu {
                 print("invalid input")
             }
         }
-        
     }
    
     func logout() {
@@ -73,8 +72,10 @@ struct CustomerMenu {
             print("=====================================================================================");
             print("Product ID\t|\tProduct Name\t|\tunit price\t|\tAvailable quantity");
             print("=====================================================================================");
-            products.filter { $0.productCategory == productPreferenceEnum }.forEach{print("\($0.productID)\t\t\t\($0.productName)\t\t\t\t\t\($0.productPrice)\t\t\t\t\($0.productQuantity)")}
-            print("Would you like to view more products? [Y] or type anything to exit")
+            products.filter { $0.productCategory == productPreferenceEnum }.forEach{
+                print("\($0.productID)\t\t\t\($0.productName)\t\t\t\t\t\($0.productPrice)\t\t\t\t\($0.productQuantity)")
+            }
+            print("Would you like to view more products? [Y/y] or type anything to exit")
             moreProducts = InputUtil.getValidStringInput()
         }
         return true
@@ -135,7 +136,7 @@ struct CustomerMenu {
         }
         while(true) {
             print("Enter \t\t\t1.Go Back\t\t\t\t\t\t2.Place Order")
-            var cartChoice: Int = InputUtil.getValidNumberInput(minValue: 1, maxValue: 2)
+            let cartChoice: Int = InputUtil.getValidNumberInput(minValue: 1, maxValue: 2)
             if cartChoice == 1 {
                 return
             }

@@ -92,9 +92,9 @@ struct InputUtil {
     
     static func getValidDiscountPercentage() -> Double {
         print(">> " , terminator: "")
-        print("Discount percentage must be between 0 to 100")
+        print("Discount percentage must be between 0.1 to 100")
         let input: Double = getValidDoubleInput()
-        if input >= 0 && input <= 100 {
+        if input > 0 && input <= 100 {
             return input
         }
         return getValidDiscountPercentage()
