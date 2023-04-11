@@ -60,6 +60,7 @@ struct InputUtil {
     
     static func getValidPassword() -> String {
         print("password must have minimum 8 characters at least and 1 Number")
+        print(">> " , terminator: "")
         let input: String = readLine()!
         guard input.range(of: #"^(?=.*\d)[a-zA-z0-9]{8,10}$"#, options: .regularExpression) != nil else {
             return getValidPassword()

@@ -48,7 +48,7 @@ class Admin: User {
     }
     
     func listOrders() -> [String] {
-        var orders: [Int: Order] = adminOrderManager.getAllOrders()
+        let orders: [Int: Order] = adminOrderManager.getAllOrders()
         var allOrders: [String] = []
         if orders.isEmpty {
             allOrders.append("no orders placed yet")
@@ -57,7 +57,8 @@ class Admin: User {
             for order in orders {
                 allOrders.append("Customer PhoneNumber: \(order.key)")
                 allOrders.append("Customer Name: \(order.value.getCustomer.getName)")
-                allOrders.append("\(order.value.getCart)")
+                let cart: [String] = order.value.getCart
+                allOrders.append(contentsOf: cart)
             }
         }
         return allOrders

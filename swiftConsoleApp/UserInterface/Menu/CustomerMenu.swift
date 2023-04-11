@@ -112,7 +112,13 @@ struct CustomerMenu {
     }
     
     func removeProductFromCart() {
-        viewCart()
+        guard !customer.getCart().isEmpty else {
+            print(Messages.noCartExist)
+            return
+        }
+        customer.getCart().forEach{
+            print($0)
+        }
         print("Enter product name to remove from cart")
         let productName: String = InputUtil.getValidStringInput()
         print(customer.removeProductFromCart(productName: productName))
@@ -134,8 +140,7 @@ struct CustomerMenu {
                 return
             }
             else if cartChoice == 2 {
-                customer.placeOrder()
-                print("Your Order has been placed!")
+                print(customer.placeOrder())
                 return
             }
             else {

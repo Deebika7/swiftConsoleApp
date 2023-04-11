@@ -7,9 +7,9 @@
 
 struct Order {
     private let customer: Customer
-    private let cart: [Cart]
+    private let cart: [String]
     
-    init(customer: Customer, cart: [Cart]){
+    init(customer: Customer, cart: [String]){
         self.customer = customer
         self.cart = cart
     }
@@ -17,7 +17,7 @@ struct Order {
         return self.customer
     }
     
-    public var getCart: [Cart] {
+    public var getCart: [String] {
         return self.cart
     }
 }

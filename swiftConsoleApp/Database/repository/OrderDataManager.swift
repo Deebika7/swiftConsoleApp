@@ -59,15 +59,18 @@ class OrderDataManager: AdminOrderManagerProtocol, CustomerOrderManagerProtocol 
             databaseManager.UpdateCartToDB(phoneNumber: phoneNumber, cart: cart)
             return cart
         }
-        return nil
+        return []
     }
     func getCart(phoneNumber: Int) -> [String] {
         var totalAmount: Double = 0
         if let cart: [Cart] = filterCart(phoneNumber: phoneNumber) {
+            guard !cart.isEmpty else {
+                return []
+            }
             var cartProducts: [String] = []
             cartProducts.append("==================================================================================================================")
 
-            cartProducts.append("Product Name\t|\tQuantity\t|\tPrice\t|\tTotal Amount\t|\tDiscount Percentage\t|Total Amount After Discount")
+            cartProducts.append("Product Name\t|\tQuantity\t|\tPrice\t|Total Amount\t|Discount Percentage\t|Total Amount After Discount")
             cartProducts.append("==================================================================================================================")
 
             for productFromCart in cart {
@@ -79,7 +82,7 @@ class OrderDataManager: AdminOrderManagerProtocol, CustomerOrderManagerProtocol 
                 else {
                     price = productFromCart.cartProduct.productPrice
                 }
-                cartProducts.append("\(productFromCart.cartProduct.productName)\t\t\t\t \(productFromCart.cartQuantity)\t\t\t\t\(productFromCart.cartProduct.productPrice)\t\t\t\t\(Double(productFromCart.cartQuantity) * productFromCart.cartProduct.productPrice)\t\t\t\t\t\(discountPercentage)\t\t\t\t\t\t\t \(Double(productFromCart.cartQuantity) * price)")
+                cartProducts.append("\(productFromCart.cartProduct.productName)\t\t\t\t \(productFromCart.cartQuantity)\t\t\t\t\(productFromCart.cartProduct.productPrice)\t\t\t\t\(Double(productFromCart.cartQuantity) * productFromCart.cartProduct.productPrice)\t\t\t\t\t\(discountPercentage)\t\t\t\t \(Double(productFromCart.cartQuantity) * price)")
                 totalAmount += Double(productFromCart.cartQuantity) * price
             }
             cartProducts.append("\n");
@@ -100,10 +103,10 @@ class OrderDataManager: AdminOrderManagerProtocol, CustomerOrderManagerProtocol 
                 for (index, productFromCart) in cart.enumerated() {
                     if productFromCart.cartProduct.productName == productName {
                         cart.remove(at: index)
+                        databaseManager.UpdateCartToDB(phoneNumber: phoneNumber, cart: cart)
                         return Messages.productRemovedFromCart
                     }
                 }
-                databaseManager.UpdateCartToDB(phoneNumber: phoneNumber, cart: cart)
             }
         }
         return Messages.noCartExist
@@ -115,7 +118,7 @@ class OrderDataManager: AdminOrderManagerProtocol, CustomerOrderManagerProtocol 
     
     func addToOrders(customer: Customer) {
         if let cart: [Cart] = databaseManager.getCartFromDB(phoneNumber: customer.getPhoneNumber) {
-            databaseManager.addOrdersToDB(phoneNumber: customer.getPhoneNumber, order: Order(customer: customer, cart: databaseManager.getCartFromDB(phoneNumber: customer.getPhoneNumber) ?? [] ))
+            databaseManager.addOrdersToDB(phoneNumber: customer.getPhoneNumber, order: Order(customer: customer, cart: getCart(phoneNumber: customer.getPhoneNumber) ?? [] ))
         }
     }
     

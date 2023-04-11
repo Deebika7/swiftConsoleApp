@@ -5,7 +5,7 @@
 //  Created by deebika-pt6680 on 30/03/23.
 //
 
-struct UserDataManager {
+class UserDataManager: UserDetailsManagerProtocol {
     
     init(){
         databaseManager.addUserToUserDB(phoneNumber: 9876543210, user: Admin(name: "test", phoneNumber: 9876543210, adminOrderManager: OrderDataManager(), adminProductManager: ProductDataManager()))
