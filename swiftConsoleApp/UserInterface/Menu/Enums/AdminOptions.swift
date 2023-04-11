@@ -7,7 +7,7 @@
 
 enum AdminOptions: String, CaseIterable {
     
-    case listOrders = "List Orders",
+    case listRecentOrders = "List Recent Orders",
          viewProduct = "View Product",
          viewDiscounts = "View Discounts",
          addProduct = "Add Product",

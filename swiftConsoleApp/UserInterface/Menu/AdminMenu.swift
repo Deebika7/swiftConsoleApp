@@ -29,8 +29,8 @@ struct AdminMenu {
             let preferenceEnum: AdminOptions = AdminOptions.allCases[preference - 1]
             
             switch preferenceEnum {
-            case .listOrders:
-                listOrders()
+            case .listRecentOrders:
+                listRecentOrders()
             case .viewProduct:
                 viewProducts()
             case .viewDiscounts:
@@ -45,8 +45,6 @@ struct AdminMenu {
                 removeDiscount()
             case .quit:
                 adminMenuLoop = false
-            default:
-                print("invalid input")
             }
         }
     }
@@ -96,11 +94,11 @@ struct AdminMenu {
             let productPreferenceEnum: ProductCategory = ProductCategory.allCases[productPreference - 1]
             let products: [Product] = admin.getProducts()
             print("==========================\t\(productPreferenceEnum)\t================================================")
-            print("=====================================================================================");
+            print("=====================================================================================")
             print("Product ID\t|\tProduct Name\t|\tunit price\t|\tAvailable quantity");
-            print("=====================================================================================");
+            print("=====================================================================================")
             products.filter { $0.productCategory == productPreferenceEnum }.forEach{print("\($0.productID)\t\t\t\($0.productName)\t\t\t\t\t\($0.productPrice)\t\t\t\t\($0.productQuantity)")}
-            print("=====================================================================================");
+            print("=====================================================================================")
             print("Would you like to view more products? [Y/y] or type anything to exit")
             moreProducts = InputUtil.getValidStringInput()
         }
@@ -139,7 +137,7 @@ struct AdminMenu {
         }
     }
     
-    func listOrders() {
+    func listRecentOrders() {
         let orders: [String] = admin.listOrders()
         orders.forEach {
             print($0)

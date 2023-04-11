@@ -69,12 +69,13 @@ struct CustomerMenu {
             let productPreferenceEnum: ProductCategory = ProductCategory.allCases[productPreference - 1]
             let products: [Product] = customer.getProducts()
             print("==========================\t\(productPreferenceEnum)\t================================================")
-            print("=====================================================================================");
-            print("Product ID\t|\tProduct Name\t|\tunit price\t|\tAvailable quantity");
-            print("=====================================================================================");
+            print("=====================================================================================")
+            print("Product ID\t|\tProduct Name\t|\tunit price\t|\tAvailable quantity")
+            print("=====================================================================================")
             products.filter { $0.productCategory == productPreferenceEnum }.forEach{
                 print("\($0.productID)\t\t\t\($0.productName)\t\t\t\t\t\($0.productPrice)\t\t\t\t\($0.productQuantity)")
             }
+            print("=====================================================================================")
             print("Would you like to view more products? [Y/y] or type anything to exit")
             moreProducts = InputUtil.getValidStringInput()
         }

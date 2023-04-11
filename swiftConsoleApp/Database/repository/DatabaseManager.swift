@@ -63,7 +63,7 @@ class DatabaseManager {
     
     func updateProductQuantity(product: Product, quantity: Int) {
         removeProductFromDB(productName: product.productName)
-        addProductToDB(productName: product.productName, product: Product(ID: product.productID, name: product.productName, category: product.productCategory, price: product.productPrice,quantity: quantity))
+        addProductToDB(productName: product.productName, product: Product(ID: product.productID, name: product.productName, category: product.productCategory, price: product.productPrice, quantity: quantity))
     }
     
     //discount functions
@@ -122,7 +122,9 @@ class DatabaseManager {
         Array(DBInstance.cartDb[phoneNumber] ?? [])
     }
     
-    func UpdateCartToDB(phoneNumber: Int, cart: [Cart]) -> () {
+    func UpdateCartToDB(phoneNumber: Int, cart: [Cart])
+    {
+        removeCartFromCartDB(phoneNumber: phoneNumber)
         DBInstance.cartDb[phoneNumber] = cart
     }
     

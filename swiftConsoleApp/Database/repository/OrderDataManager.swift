@@ -43,17 +43,22 @@ class OrderDataManager: AdminOrderManagerProtocol, CustomerOrderManagerProtocol 
     
     private func filterCart(phoneNumber: Int) -> [Cart]? {
         if var cart: [Cart] = databaseManager.getCartFromDB(phoneNumber: phoneNumber) {
-            for var (index,  productFromCart) in cart.enumerated() {
-                if productFromCart.cartQuantity > productFromCart.cartProduct.productQuantity {
+            
+            for (index, productFromCart) in cart.enumerated() {
+                
+                if databaseManager.getProductFromDB(productName: productFromCart.cartProduct.productName) == nil {
+                    cart.remove(at: index)
+                }
+                
+                if productFromCart.cartQuantity > databaseManager.getProductFromDB(productName: productFromCart.cartProduct.productName)?.productQuantity ?? 0 {
                     if productFromCart.cartProduct.productQuantity == 0 {
                         cart.remove(at: index)
                     }
                     else {
-                        productFromCart.cartQuantity = productFromCart.cartProduct.productQuantity
+                    let quantity: Int = databaseManager.getProductFromDB(productName: productFromCart.cartProduct.productName)?.productQuantity ?? 0
+                        databaseManager.removeProductFromDB(productName: productFromCart.cartProduct.productName)
+                        databaseManager.addProductToCartDB(phoneNumber: phoneNumber, cart: Cart(quantity: quantity, product: Product(ID: productFromCart.cartProduct.productID, name: productFromCart.cartProduct.productName, category: productFromCart.cartProduct.productCategory, price: productFromCart.cartProduct.productPrice, quantity: quantity)))
                     }
-                }
-                if databaseManager.getProductFromDB(productName: productFromCart.cartProduct.productName) == nil {
-                    cart.remove(at: index)
                 }
             }
             databaseManager.UpdateCartToDB(phoneNumber: phoneNumber, cart: cart)
@@ -117,7 +122,7 @@ class OrderDataManager: AdminOrderManagerProtocol, CustomerOrderManagerProtocol 
     }
     
     func addToOrders(customer: Customer) {
-        if let cart: [Cart] = databaseManager.getCartFromDB(phoneNumber: customer.getPhoneNumber) {
+        if let cart = databaseManager.getCartFromDB(phoneNumber: customer.getPhoneNumber), !cart.isEmpty {
             databaseManager.addOrdersToDB(phoneNumber: customer.getPhoneNumber, order: Order(customer: customer, cart: getCart(phoneNumber: customer.getPhoneNumber)))
         }
     }
@@ -126,15 +131,13 @@ class OrderDataManager: AdminOrderManagerProtocol, CustomerOrderManagerProtocol 
         if let cart: [Cart] = databaseManager.getCartFromDB(phoneNumber: phoneNumber) {
             cart.forEach{
                 if let product: Product = databaseManager.getProductFromDB(productName: $0.cartProduct.productName) {
-                    let quantity: Int = product.productQuantity - $0.cartProduct.productQuantity
+                    let quantity: Int = product.productQuantity - $0.cartQuantity
                     databaseManager.updateProductQuantity(product: product, quantity: quantity)
                 }
             }
         }
         return Messages.orderplaced
     }
-    
-    
     
     func getAllOrders() -> [Int: Order] {
         databaseManager.getAllOrdersFromDB()

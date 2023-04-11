@@ -190,26 +190,10 @@
             filePath = "swiftConsoleApp/UserInterface/Menu/AdminMenu.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "addProduct()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EFD1F4C6-BAFA-4A5C-9E22-E992B837114D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "swiftConsoleApp/Database/repository/ProductDataManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "ProductDataManager"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -231,16 +215,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "369408C5-F41C-4DEF-829C-FB14BD2E631B"
-            shouldBeEnabled = "No"
+            uuid = "16013144-59CD-4E47-B626-F46D0348B2DB"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "swiftConsoleApp/Core/model/Users/Admin.swift"
+            filePath = "swiftConsoleApp/UserInterface/Helper/InputUtil.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "getDiscounts()"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "getValidphoneNumber()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
