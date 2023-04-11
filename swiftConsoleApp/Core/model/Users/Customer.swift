@@ -7,8 +7,8 @@
 
 class Customer: User {
     
-    var customerOrderManager: CustomerOrderManagerProtocol
-    var customerProductManager: CustomerProductManagerProtocol
+    private var customerOrderManager: CustomerOrderManagerProtocol
+    private var customerProductManager: CustomerProductManagerProtocol
     
     init(name: String, phoneNumber: Int, customerOrderManager: CustomerOrderManagerProtocol, customerProductManager: CustomerProductManagerProtocol) {
         self.customerOrderManager = customerOrderManager
@@ -28,16 +28,27 @@ class Customer: User {
         customerProductManager.getAllProduct()
     }
     
-    func addProductToCart() {
-        
+    func addProductToCart(productName: String, productQuantity: Int) -> String {
+        return customerOrderManager.addProductToCart(phoneNumber: self.getPhoneNumber, productName: productName, quantity: productQuantity)
     }
     
-    func getCart() {
-        
+    func getCart() -> [String] {
+        return customerOrderManager.getCart(phoneNumber: self.getPhoneNumber)
     }
     
-    func removeProductFromCart() {
-        
+    func removeProductFromCart(productName: String) -> String {
+        return customerOrderManager.removeProductFromCart(phoneNumber: self.getPhoneNumber, productName: productName)
+    }
+    
+    func clearCart(phoneNumber: Int) {
+        customerOrderManager.clearCart(phoneNumber: phoneNumber)
+    }
+    
+    func placeOrder() -> String {
+        customerOrderManager.addToOrders(customer: self)
+        let message: String = customerOrderManager.placeOrder(phoneNumber: self.getPhoneNumber)
+        customerOrderManager.clearCart(phoneNumber: self.getPhoneNumber)
+        return message
     }
 }
 

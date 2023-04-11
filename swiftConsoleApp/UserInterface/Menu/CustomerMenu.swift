@@ -38,29 +38,46 @@ struct CustomerMenu {
             case .viewCart:
                 viewCart()
             case .quit:
-                break 
+                logout()
+                return
             default:
                 print("invalid input")
             }
         }
         
     }
-
-    func viewProducts() {
+   
+    func logout() {
+        print("Thank You!")
+    }
+    
+    func printProductCategory() {
+        for (index, value) in ProductCategory.allCases.enumerated() {
+            print("\(index + 1). \(value.rawValue)")
+        }
+    }
+    
+    func viewProducts() -> Bool {
         guard !customer.getProducts().isEmpty else {
             print(Messages.noProductExist)
-            return
+            return false
         }
-        print("Select category to view products")
-        printProductCategory()
-        let productPreference: Int = InputUtil.getValidNumberInput(minValue: 1, maxValue: ProductCategory.allCases.count)
-        let productPreferenceEnum: ProductCategory = ProductCategory.allCases[productPreference - 1]
-        let products: [Product] = customer.getProducts()
-        print("==========================\t\(productPreferenceEnum)\t===============================================")
-        print("=====================================================================================");
-        print("Product ID\t|\tProduct Name\t|\tunit price\t|\tAvailable quantity");
-        print("=====================================================================================");
-        products.filter { $0.productCategory == productPreferenceEnum }.forEach{print("\($0.productID)\t\t\t\($0.productName)\t\t\t\t\t\($0.productPrice)\t\t\t\t\($0.productQuantity)")}
+        var moreProducts: String = "y"
+        while(moreProducts == "y" || moreProducts == "Y") {
+            print("Select category to view products")
+            printProductCategory()
+            let productPreference: Int = InputUtil.getValidNumberInput(minValue: 1, maxValue: ProductCategory.allCases.count)
+            let productPreferenceEnum: ProductCategory = ProductCategory.allCases[productPreference - 1]
+            let products: [Product] = customer.getProducts()
+            print("==========================\t\(productPreferenceEnum)\t================================================")
+            print("=====================================================================================");
+            print("Product ID\t|\tProduct Name\t|\tunit price\t|\tAvailable quantity");
+            print("=====================================================================================");
+            products.filter { $0.productCategory == productPreferenceEnum }.forEach{print("\($0.productID)\t\t\t\($0.productName)\t\t\t\t\t\($0.productPrice)\t\t\t\t\($0.productQuantity)")}
+            print("Would you like to view more products? [Y] or type anything to exit")
+            moreProducts = InputUtil.getValidStringInput()
+        }
+        return true
     }
     
     func viewDiscount() {
@@ -68,7 +85,7 @@ struct CustomerMenu {
             print(Messages.noDiscountExist)
             return
         }
-        let discounts: [String:Discount] = customer.getDiscounts()
+        let discounts: [String: Discount] = customer.getDiscounts()
         discounts.forEach{ discount in
             print("=========================================================")
             print("Discount ID\t|\tProduct Name\t|\tDiscount Percentage")
@@ -79,15 +96,49 @@ struct CustomerMenu {
     }
     
     func addProductToCart() {
-        print("Enter product name: ")
+        guard viewProducts() else {
+            return
+        }
+        print("Enter product name to add to cart")
+        let productName: String = InputUtil.getValidStringInput()
+        //product status
+        print("Enter quantity ")
+        let productQuantity: Int = InputUtil.getValidProductQuantity()
+        print(customer.addProductToCart(productName: productName,
+                                        productQuantity: productQuantity))
     }
     
     func removeProductFromCart() {
+        viewCart()
+        print("Enter product name to remove from cart")
+        let productName: String = InputUtil.getValidStringInput()
+        print(customer.removeProductFromCart(productName: productName))
         
     }
     
     func viewCart() {
-        
+        guard !customer.getCart().isEmpty else {
+            print(Messages.noCartExist)
+            return
+        }
+        customer.getCart().forEach{
+            print($0)
+        }
+        while(true) {
+            print("Enter \t\t\t1.Go Back\t\t\t\t\t\t2.Place Order")
+            var cartChoice: Int = InputUtil.getValidNumberInput(minValue: 1, maxValue: 2)
+            if cartChoice == 1 {
+                return
+            }
+            else if cartChoice == 2 {
+                customer.placeOrder()
+                print("Your Order has been placed!")
+                return
+            }
+            else {
+                print("Invalid Input Try Again!")
+            }
+        }
     }
     
     

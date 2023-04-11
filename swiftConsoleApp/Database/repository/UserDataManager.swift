@@ -10,6 +10,8 @@ struct UserDataManager {
     init(){
         databaseManager.addUserToUserDB(phoneNumber: 9876543210, user: Admin(name: "test", phoneNumber: 9876543210, adminOrderManager: OrderDataManager(), adminProductManager: ProductDataManager()))
         databaseManager.addPhoneNumberAndPasswordToDB(phoneNumber: 9876543210, password: "test1234")
+        databaseManager.addUserToUserDB(phoneNumber: 9876543211, user: Customer(name: "test", phoneNumber: 9876543210, customerOrderManager: OrderDataManager(), customerProductManager: ProductDataManager()))
+        databaseManager.addPhoneNumberAndPasswordToDB(phoneNumber: 9876543211, password: "test1234")
     }
     
     var databaseManager = DatabaseManager.DBManagerInstance
@@ -20,7 +22,7 @@ struct UserDataManager {
     
     func addUser(name: String, phoneNumber: Int, password: String, userType: UserType) -> Bool {
         databaseManager.addPhoneNumberAndPasswordToDB(phoneNumber: phoneNumber, password: password)
-        if(userType == .admin) {
+        if userType == .admin {
             databaseManager.addUserToUserDB(phoneNumber: phoneNumber, user: Admin(name: name, phoneNumber: phoneNumber, adminOrderManager: OrderDataManager(), adminProductManager: ProductDataManager()))
         }
         else {

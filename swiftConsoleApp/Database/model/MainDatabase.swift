@@ -6,14 +6,12 @@
 //
 
 struct MainDatabase {
-    
     var productDb: [String: Product] = [:]
     var discountDb: [String: Discount] = [:]
-    var orderDb: [String: Order] = [:]
+    var orderDb: [Int: Order] = [:]
     var userDb: [Int: User] = [:]
     var cartDb: [Int: [Cart]] = [:]
     var accountDb: [Int: String] = [:]
-    
 }
 
 

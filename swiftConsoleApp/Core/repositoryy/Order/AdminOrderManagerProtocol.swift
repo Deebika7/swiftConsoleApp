@@ -6,5 +6,5 @@
 //
 
 protocol AdminOrderManagerProtocol: AnyObject {
-    
+    func getAllOrders() -> [Int: Order] 
 }

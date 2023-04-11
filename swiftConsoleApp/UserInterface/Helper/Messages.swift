@@ -20,4 +20,9 @@ struct Messages {
     static let discounAdded = "Discount Added Successfully"
     static let noDiscountExist = "Discount doesn't Exist"
     static let discountAlreadyExist = "Discount Exist Already"
+    static let productAddedToCart = "Product Added To Cart Successfully"
+    static let productOutOfStock = "Product Out Of Stock"
+    static let noCartExist = "Cart doesn't Exist"
+    static let productRemovedFromCart = "Product Removed From Cart Successfully"
+    static let orderplaced = "Order Placed Successfully"
 }

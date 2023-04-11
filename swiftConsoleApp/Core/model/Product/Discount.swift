@@ -6,13 +6,13 @@
 //
 
 struct Discount {
-    var description: String {
-        return ""
-    }
-    
     
     private let ID: Int
     private var percentage: Double
+    
+    var description: String {
+        return ""
+    }
     
     public var discountID: Int {
         get {

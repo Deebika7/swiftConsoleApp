@@ -18,7 +18,18 @@ class User: CustomStringConvertible {
         self.name = name
         self.phoneNumber = phoneNumber
     }
+    
+    public var getPhoneNumber: Int {
+        get {
+            return self.phoneNumber
+        }
+    }
    
+    public var getName: String {
+        get {
+            return self.name
+        }
+    }
     
 }
 

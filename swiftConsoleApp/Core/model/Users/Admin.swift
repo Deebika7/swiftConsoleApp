@@ -7,8 +7,8 @@
 
 class Admin: User {
     
-    var adminOrderManager: AdminOrderManagerProtocol
-    var adminProductManager: AdminProductManagerProtocol
+    private var adminOrderManager: AdminOrderManagerProtocol
+    private var adminProductManager: AdminProductManagerProtocol
     
     init(name: String, phoneNumber: Int, adminOrderManager: AdminOrderManagerProtocol, adminProductManager: AdminProductManagerProtocol) {
         self.adminOrderManager = adminOrderManager
@@ -47,8 +47,20 @@ class Admin: User {
         adminProductManager.getAllDiscount()
     }
     
-    func listOrders() {
-        
+    func listOrders() -> [String] {
+        var orders: [Int: Order] = adminOrderManager.getAllOrders()
+        var allOrders: [String] = []
+        if orders.isEmpty {
+            allOrders.append("no orders placed yet")
+        }
+        else {
+            for order in orders {
+                allOrders.append("Customer PhoneNumber: \(order.key)")
+                allOrders.append("Customer Name: \(order.value.getCustomer.getName)")
+                allOrders.append("\(order.value.getCart)")
+            }
+        }
+        return allOrders
     }
 
 }

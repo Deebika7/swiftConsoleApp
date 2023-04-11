@@ -9,6 +9,16 @@ class ProductDataManager: AdminProductManagerProtocol, CustomerProductManagerPro
     
     var databaseManager = DatabaseManager.DBManagerInstance
     
+    init() {
+        databaseManager.addProductToDB(productName: "milk", product:Product(ID: Int.random(in: 1 ... 1000000), name: "milk", category: ProductCategory.dairy, price: 12, quantity: 3) )
+        databaseManager.addProductToDB(productName: "sauce", product:Product(ID: Int.random(in: 1 ... 1000000), name: "sauce", category: ProductCategory.sause, price: 12, quantity: 3) )
+        databaseManager.addProductToDB(productName: "detegerent", product:Product(ID: Int.random(in: 1 ... 1000000), name: "detegerent", category: ProductCategory.cleaning, price: 12, quantity: 3) )
+        databaseManager.addProductToDB(productName: "clove", product:Product(ID: Int.random(in: 1 ... 1000000), name: "clove", category: ProductCategory.spice, price: 12, quantity: 3) )
+        databaseManager.addProductToDB(productName: "cheese", product:Product(ID: Int.random(in: 1 ... 1000000), name: "cheese", category: ProductCategory.dairy, price: 12, quantity: 3) )
+        databaseManager.addProductToDB(productName: "soap", product:Product(ID: Int.random(in: 1 ... 1000000), name: "soap", category: ProductCategory.cleaning, price: 12, quantity: 3) )
+        databaseManager.addProductToDB(productName: "ketchup", product:Product(ID: Int.random(in: 1 ... 1000000), name: "ketchup", category: ProductCategory.dairy, price: 12, quantity: 3) )
+    }
+    
     func checkIfProductExist(productName: String) -> Bool {
         databaseManager.isProductExistInDB(productName: productName)
     }
@@ -53,7 +63,8 @@ class ProductDataManager: AdminProductManagerProtocol, CustomerProductManagerPro
         databaseManager.getAllProductsFromDB()
     }
     
-    func getAllDiscount() -> [String:Discount] {
+    func getAllDiscount() -> [String: Discount] {
         databaseManager.getDiscountsFromDB()
     }
+    
 }

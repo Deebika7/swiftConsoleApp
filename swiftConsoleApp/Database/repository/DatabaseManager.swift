@@ -61,6 +61,11 @@ class DatabaseManager {
         Array(DBInstance.productDb.values)
     }
     
+    func updateProductQuantity(product: Product, quantity: Int) {
+        removeProductFromDB(productName: product.productName)
+        addProductToDB(productName: product.productName, product: Product(ID: product.productID, name: product.productName, category: product.productCategory, price: product.productPrice,quantity: quantity))
+    }
+    
     //discount functions
     func addDiscountToDB(productName: String, discount: Discount) {
         DBInstance.discountDb[productName] = discount
@@ -91,22 +96,47 @@ class DatabaseManager {
     }
     
     //cart functions
-    func addProductToCartDB<T: CustomStringConvertible>(product: Product) -> [T] {
-        return []
+    
+    func createCart(phoneNumber: Int) {
+        DBInstance.cartDb[phoneNumber] = []
     }
     
-    func removeProductFromCartDB() {
-        
+    func getProductFromCart(productName: String, cart: [Cart]) -> Cart? {
+        for cartProduct in cart {
+            if(cartProduct.cartProduct.productName == productName){
+                return cartProduct
+            }
+        }
+        return nil
     }
     
-    func getCartFromDB()  {
-        
+    func addProductToCartDB(phoneNumber: Int, cart: Cart){
+        DBInstance.cartDb[phoneNumber]?.append(cart)
     }
     
-    func UpdateCartToDB() -> () {
-        
+    func removeCartFromCartDB(phoneNumber: Int) {
+        DBInstance.cartDb.removeValue(forKey: phoneNumber)
     }
     
+    func getCartFromDB(phoneNumber: Int) -> [Cart]? {
+        Array(DBInstance.cartDb[phoneNumber] ?? [])
+    }
+    
+    func UpdateCartToDB(phoneNumber: Int, cart: [Cart]) -> () {
+        DBInstance.cartDb[phoneNumber] = cart
+    }
+    
+    func isCartExist(phoneNumber: Int) -> Bool {
+        DBInstance.cartDb.keys.contains(phoneNumber)
+    }
+    
+    func addOrdersToDB(phoneNumber: Int, order: Order) {
+        DBInstance.orderDb[phoneNumber] = order
+    }
+    
+    func getAllOrdersFromDB() -> [Int: Order] {
+        DBInstance.orderDb
+    }
 }
 
 

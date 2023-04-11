@@ -6,7 +6,6 @@
 //
 
 protocol AdminProductManagerProtocol: AnyObject {
-    
     func addProduct(product: Product) -> Bool
     func removeProduct(productName: String) -> String
     func addDiscount(productName: String, discount: Discount) -> String
