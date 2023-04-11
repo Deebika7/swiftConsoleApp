@@ -141,7 +141,7 @@ struct AdminMenu {
     
     func listOrders() {
         var orders: [String] = admin.listOrders()
-        orders.forEach{
+        orders.forEach {
             print($0)
         }
     }

@@ -101,7 +101,10 @@ struct CustomerMenu {
         }
         print("Enter product name to add to cart")
         let productName: String = InputUtil.getValidStringInput()
-        //product status
+        guard customer.checkIfProductExist(productName: productName) else {
+            print(Messages.noProductExist)
+            return
+        }
         print("Enter quantity ")
         let productQuantity: Int = InputUtil.getValidProductQuantity()
         print(customer.addProductToCart(productName: productName,

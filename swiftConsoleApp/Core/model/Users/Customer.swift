@@ -44,6 +44,11 @@ class Customer: User {
         customerOrderManager.clearCart(phoneNumber: phoneNumber)
     }
     
+    func checkIfProductExist(productName: String) -> Bool {
+        customerProductManager.checkIfProductExist(productName: productName)
+    }
+        
+
     func placeOrder() -> String {
         customerOrderManager.addToOrders(customer: self)
         let message: String = customerOrderManager.placeOrder(phoneNumber: self.getPhoneNumber)

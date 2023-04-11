@@ -8,4 +8,5 @@
 protocol CustomerProductManagerProtocol: AnyObject {
     func getAllProduct() -> [Product]
     func getAllDiscount() -> [String: Discount]
+    func checkIfProductExist(productName: String) -> Bool
 }
