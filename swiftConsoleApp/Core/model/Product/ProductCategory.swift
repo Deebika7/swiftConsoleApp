@@ -7,7 +7,7 @@
 
 enum ProductCategory: String, CaseIterable {
    case dairy = "Dairy",
-        sause = "Sause",
+        sauce = "Sauce",
         cleaning = "Cleaning",
         vegetables = "Vegetables",
         fruits = "Fruits",

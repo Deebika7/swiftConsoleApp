@@ -101,7 +101,7 @@ struct InputUtil {
     }
     
     static func getValidPrice() -> Double {
-        print("product quantity value should be greater than 0")
+        print("product price value should be greater than 0")
         let input: Double = getValidDoubleInput()
         if  input > 0 {
             return input
